@@ -1,4 +1,4 @@
-al_<?php
+<?php
 
 use Illuminate\Support\Str;
 
