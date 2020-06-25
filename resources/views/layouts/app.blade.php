@@ -55,12 +55,19 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('mypage') }}"
+                                    onclick="event.preventDefault();
+                                                       document.getElementById('mypage').submit();">
+                                        {{ __('マイページ') }}           
+                                </a>  
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
-
+                                    <form id="mypage" action="{{ route('mypage') }}" method="GET">
+                                        @csrf
+                                    </form>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
