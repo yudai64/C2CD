@@ -32,5 +32,6 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/mypage','MyPageController@getUser')->name('mypage');
 
+Route::get('/mypage','MyPageController@getUser')->name('mypage');
+Route::get('mypage/profile', 'MyPageController@profile');
