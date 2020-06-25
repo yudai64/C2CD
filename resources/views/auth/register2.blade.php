@@ -30,7 +30,7 @@
                             <label for="postal_code" class="col-md-4 col-form-label text-md-right">{{ __('郵便番号') }}</label>
 
                             <div class="col-md-6">
-                                <input id="postal_code" type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ old('postal_code') }}" required autocomplete="postal_code" placeholder="150-0022">
+                                <input id="postal_code" type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ old('postal_code') }}" required autocomplete="postal_code" placeholder="123-4567">
 
                                 @error('postal_code')
                                     <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
                             <label for="phone_number" class="col-md-4 col-form-label text-md-right">{{ __('電話番号') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number"  placeholder="03-6721-7105">
+                                <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number"  placeholder="012-3456-7890">
 
                                 @error('phone_number')
                                     <span class="invalid-feedback" role="alert">
