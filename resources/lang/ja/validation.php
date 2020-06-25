@@ -90,6 +90,11 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        
+        'password_confirmation' => [
+            'required' => 'パスワードを再入力してください',
+            'same' => 'パスワードの値と一致しません。'
+        ],
     ],
 
     /*

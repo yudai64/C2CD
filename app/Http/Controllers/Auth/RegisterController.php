@@ -8,6 +8,8 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Request as PostRequest;
 
 class RegisterController extends Controller
 {
@@ -75,5 +77,16 @@ class RegisterController extends Controller
             'phone_number' => $data['phone_number'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function register2(Request $request)
+    {
+        $request->validate([
+            'email'      => 'required|email|unique:users,email',
+            'password' => 'required|min:8',
+            'password_confirmation' => 'required|same:password',
+           ]);
+        $post_data = PostRequest::all();
+        return view('auth.register2', compact('post_data'));
     }
 }
