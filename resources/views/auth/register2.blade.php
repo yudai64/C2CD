@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('新規登録') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/register">
+                    <form method="POST" action="register/confirm">
                         @csrf
 
                         

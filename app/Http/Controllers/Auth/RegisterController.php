@@ -86,7 +86,15 @@ class RegisterController extends Controller
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password',
            ]);
+
         $post_data = PostRequest::all();
         return view('auth.register2', compact('post_data'));
     }
+
+    public function confirm(Request $request)
+    {
+        $post_data = PostRequest::all();
+        return view('auth.confirm', compact('post_data'));
+    }
+
 }

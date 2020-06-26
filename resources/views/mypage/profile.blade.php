@@ -29,6 +29,7 @@
                   </div>
                 </div>
 
+                <a href="/mypage/profile/edit" class="ml-4">編集</a>
                 <form method="GET" action="/mypage/profile/edit">
                   <button type="submit" class="btn btn-primary ml-4 mb-3">
                       {{ __('編集') }}
