@@ -53,8 +53,8 @@
                             </div>
                           </li>
                           <form class="form-inline my-2 my-lg-0">
-                            <input type="search" class="form-control mr-sm-2" placeholder="キーワード" aria-label="検索...">
-                            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">検索</button>
+                            <input type="search" class="form-control mr-sm-2" size="80" placeholder="キーワード" aria-label="検索...">
+                            <button type="submit" class="btn btn-outline-primary my-2 my-sm-0">検索</button>
                           </form>
 
                     
