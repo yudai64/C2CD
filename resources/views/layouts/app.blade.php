@@ -26,6 +26,8 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     C2CD
                 </a>
+                 
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -33,7 +35,21 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              カテゴリ
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="#">邦楽</a>
+                              <a class="dropdown-item" href="#">洋楽</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="#">その他</a>
+                            </div>
+                          </li>
+                          <form class="form-inline my-2 my-lg-0">
+                            <input type="search" class="form-control mr-sm-2" placeholder="キーワード" aria-label="検索...">
+                            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">検索</button>
+                          </form>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -49,6 +65,9 @@
                                 </li>
                             @endif
                         @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{{ __('ショッピングカート') }}</a>
+                        </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->user_name }} <span class="caret"></span>
