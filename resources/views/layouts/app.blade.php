@@ -39,7 +39,7 @@
                     </a>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('出品') }}</a>
+                            <a class="nav-link" href="{{ route('product.create')}}">{{ __('出品') }}</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
