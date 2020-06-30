@@ -18,10 +18,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .content {
+        margin-top: 140px;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
 
                  
@@ -106,7 +111,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="content">
             @yield('content')
         </main>
     </div>
