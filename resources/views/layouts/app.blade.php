@@ -51,10 +51,13 @@
                               カテゴリ
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="#">邦楽</a>
-                              <a class="dropdown-item" href="#">洋楽</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#">その他</a>
+                              <a class="dropdown-item" href="#">カテゴリー1</a>
+                              <a class="dropdown-item" href="#">カテゴリー2</a>
+                              <a class="dropdown-item" href="#">カテゴリー3</a>
+                              <a class="dropdown-item" href="#">カテゴリー4</a>
+                              <a class="dropdown-item" href="#">カテゴリー5</a>
+                              <!-- <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="#">その他</a> -->
                             </div>
                           </li>
                           <form class="form-inline my-2 my-lg-0">
