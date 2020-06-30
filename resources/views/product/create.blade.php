@@ -29,7 +29,7 @@
                             <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('価格') }}</label>
 
                             <div class="col-md-6">
-                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" required autocomplete="price">
+                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price">
 
                                 @error('price')
                                     <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                             <label for="amount" class="col-md-4 col-form-label text-md-right">{{ __('個数') }}</label>
 
                             <div class="col-md-6">
-                                <input id="amount" type="text" class="form-control @error('amount') is-invalid @enderror" name="amount" required autocomplete="amount">
+                                <input id="amount" type="text" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ old('amount') }}" required autocomplete="amount">
 
                                 @error('amount')
                                     <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                             <label for="describe" class="col-md-4 col-form-label text-md-right">{{ __('詳細') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="describe" class="form-control @error('describe') is-invalid @enderror" name="describe" required autocomplete="describe" rows="20" col="50"></textarea>
+                                <textarea id="describe" class="form-control @error('describe') is-invalid @enderror" name="describe" value="{{ old('describe') }}" required autocomplete="describe" rows="20" col="50"></textarea>
 
                                 @error('describe')
                                     <span class="invalid-feedback" role="alert">
@@ -71,7 +71,7 @@
                             <label for="category_id" class="col-md-4 col-form-label text-md-right">{{ __('カテゴリー') }}</label>
 
                             <div class="col-md-6">
-                                <select id="category_id" class="form-control @error('category_id') is-invalid @enderror" name="category_id" required autocomplete="category_id">
+                                <select id="category_id" class="form-control @error('category_id') is-invalid @enderror" name="category_id" value="{{ old('category_id') }}" required autocomplete="category_id">
                                     <option value="">選択してください</option>
                                     <option value="1">カテゴリー1</option>
                                     <option value="2">カテゴリー2</option>
@@ -90,7 +90,7 @@
                             <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('画像') }}</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="file" class="@error('image') is-invalid @enderror" name="image">
+                                <input id="image" type="file" class="@error('image') is-invalid @enderror" value="{{ old('image') }}" name="image">
 
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
