@@ -42,3 +42,7 @@ Route::get('/mypage','MyPageController@getUser')->name('mypage');
 Route::get('mypage/profile', 'MyPageController@profile');
 Route::get('mypage/profile/edit', 'MyPageController@edit');
 Route::patch('mypage/profile/update', 'MyPageController@update');
+
+Route::resource('product', 'ProductController');
+Route::post('product/confirm', 'ProductController@confirm')->name('product.confirm');
+
