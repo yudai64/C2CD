@@ -33,7 +33,7 @@
                       {{ $product->describe }}
                     </div>
 
-                    <!-- <button type="submit" class="btn btn-primary ml-2 mt-3">{{ __('編集する') }}</button> -->
+                     <button type="submit" class="btn btn-primary ml-2 mt-3">{{ __('編集する') }}</button>
                   </form>
                 </div>
             </div>

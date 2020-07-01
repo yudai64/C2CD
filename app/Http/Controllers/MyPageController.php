@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\DB;
+
 use App\User;
+
+use App\Product;
 
 class MyPageController extends Controller
 {
@@ -52,5 +56,15 @@ class MyPageController extends Controller
         $user->phone_number = $request->phone_number;
         $user->save();
         return redirect('/mypage/profile');
+    }
+    public function listings()
+    {$user = Auth::user();
+        
+
+        $products = DB::table('products')->where('user_id', $user->id)->join('statuses','status_id','statuses.id')->paginate(20);
+
+        return view('mypage/listings', [
+            'products' => $products
+        ]);
     }
 }

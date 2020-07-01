@@ -15,7 +15,7 @@
                     @endif
                     <div class="links">
                         <a href="#">購入履歴</a><br>
-                        <a href="#">出品履歴</a><br>
+                        <a href="{{ route('mypage.listings') }}">出品履歴</a><br>
                         <a href="/mypage/profile">プロフィール</a>
     
                     </div>

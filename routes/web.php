@@ -36,6 +36,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 // Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/mypage','MyPageController@getUser')->name('mypage');
+Route::get('/mypage/listings','MypageController@listings')->name('mypage.listings');
 Route::get('mypage/profile', 'MyPageController@profile');
 Route::get('mypage/profile/edit', 'MyPageController@edit');
 Route::patch('mypage/profile/update', 'MyPageController@update');
