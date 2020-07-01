@@ -43,3 +43,6 @@ Route::patch('mypage/profile/update', 'MyPageController@update');
 Route::resource('product', 'ProductController');
 Route::post('product/confirm', 'ProductController@confirm')->name('product.confirm');
 
+Route::get('keyword', 'SearchController@keyword')->name('search.keyword');
+Route::get('category/{id}', 'SearchController@category');
+
