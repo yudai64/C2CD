@@ -51,14 +51,18 @@
                               カテゴリ
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="#">邦楽</a>
-                              <a class="dropdown-item" href="#">洋楽</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#">その他</a>
+                                <a class="dropdown-item" href="http://127.0.0.1:8000/category/1">カテゴリー1</a>
+                                <a class="dropdown-item" href="http://127.0.0.1:8000/category/2">カテゴリー2</a>
+                                <a class="dropdown-item" href="http://127.0.0.1:8000/category/3">カテゴリー3</a>
+                                <a class="dropdown-item" href="http://127.0.0.1:8000/category/4">カテゴリー4</a>
+                                <a class="dropdown-item" href="http://127.0.0.1:8000/category/5">カテゴリー5</a>
+                              <!-- <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="#">その他</a> -->
                             </div>
                           </li>
-                          <form class="form-inline my-2 my-lg-0">
-                            <input type="search" class="form-control mr-sm-2" size="80" placeholder="キーワード" aria-label="検索...">
+                          <form class="form-inline my-2 my-lg-0" method="GET" action="{{ route('search.keyword') }}">
+                            @csrf
+                            <input type="search" class="form-control mr-sm-2" size="80" placeholder="キーワード" aria-label="検索..." name="keyword" @isset( $keyword) value="{{ $keyword }}" @endisset>
                             <button type="submit" class="btn btn-outline-primary my-2 my-sm-0">検索</button>
                           </form>
 
