@@ -86,8 +86,19 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
+        $user = Auth::user();
+        if($user->id == $product->user_id){
+            $url = "mypage/productedit";
+           $button = "編集する";
+        }else{
+            $url = "product/shoppingcart";
+            $button = "カートに入れる";
+        }
         return view('product.show', [
-            'product' => $product
+            'product' => $product,
+           'url'=> $url,
+           'button' => $button
+
         ]);
     }
 }

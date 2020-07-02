@@ -7,7 +7,7 @@
                 <div class="card-header">出品詳細画面</div>
 
                 <div class="card-body">
-                  <form method="POST" action="#">
+                  <form method="POST" action="{{$url}}">
                   @csrf
                     <div class="pl-2 text-center mb-4">
                         <img src="http://127.0.0.1:8000/{{ $product->image }}" width="200" height="200">
@@ -33,7 +33,7 @@
                       {{ $product->describe }}
                     </div>
 
-                     <button type="submit" class="btn btn-primary ml-2 mt-3">{{ __('編集する') }}</button>
+                     <button type="submit" class="btn btn-primary ml-2 mt-3">{{ __($button) }}</button>
                   </form>
                 </div>
             </div>

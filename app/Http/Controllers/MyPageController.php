@@ -61,7 +61,7 @@ class MyPageController extends Controller
     {$user = Auth::user();
         
 
-        $products = DB::table('products')->where('user_id', $user->id)->join('statuses','status_id','statuses.id')->paginate(20);
+        $products = DB::table('products')->where('user_id', $user->id)->join('statuses','status_id','statuses.id')->orderByRaw('products.updated_at DESC')->paginate(20);
 
         return view('mypage/listings', [
             'products' => $products
