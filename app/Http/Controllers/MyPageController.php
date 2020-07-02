@@ -57,11 +57,12 @@ class MyPageController extends Controller
         $user->save();
         return redirect('/mypage/profile');
     }
-    public function listings()
-    {$user = Auth::user();
-        
 
-        $products = DB::table('products')->where('user_id', $user->id)->join('statuses','status_id','statuses.id')->orderByRaw('products.updated_at DESC')->paginate(20);
+    public function listings()
+    {
+        $user = Auth::user();
+        
+        $products = DB::table('products')->where('products.user_id', $user->id)->join('statuses','products.status_id', '=', 'statuses.id')->orderByRaw('products.updated_at DESC')->select('products.id', 'products.product_name', 'products.image', 'products.price', 'products.amount', 'products.describe', 'products.user_id', 'products.category_id', 'products.status_id', 'statuses.status_name')->paginate(20);
 
         return view('mypage/listings', [
             'products' => $products
