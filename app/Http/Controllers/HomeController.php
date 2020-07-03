@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = DB::table('products')->where('status_id', '=', 1, 'or' ,3)->orderByRaw('updated_at DESC')->paginate(20);
+        $products = DB::table('products')->where('status_id', '=', 1)->orderByRaw('updated_at DESC')->paginate(20);
 
         return view('home', [
             'products' => $products
