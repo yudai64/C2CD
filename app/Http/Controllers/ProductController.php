@@ -88,6 +88,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $user = Auth::user();
+
         return view('product.show', [
             'product' => $product,
         ]);

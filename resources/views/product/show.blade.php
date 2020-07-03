@@ -7,7 +7,7 @@
                 <div class="card-header">商品詳細画面</div>
 
                 <div class="card-body">
-                  <form method="GET" action="#">
+                  <form method="POST" action="{{ route('purchase.add') }}">
                   @csrf
                     <div class="pl-2 text-center mb-4">
                         <img src="http://127.0.0.1:8000/{{ $product->image }}" width="200" height="200">
@@ -32,8 +32,12 @@
                       <span id="describe">詳細 : </span>
                       {{ $product->describe }}
                     </div>
+                    <input type="hidden" name="id" value="{{ $product->id }}"/>
 
-                     <button type="submit" class="btn btn-primary ml-2 mt-3">{{ __('カートに入れる') }}</button>
+                    @if(Auth::id() !== $product->user_id)
+                      <label class="mt-5 ml-2">数量: <input type="number" name="amount" max="{{ $product->amount }}" min="0" class=""></label></br>
+                      <button type="submit" class="btn btn-primary ml-2 mt-3">{{ __('カートに入れる') }}</button>
+                    @endif
                   </form>
                 </div>
             </div>
