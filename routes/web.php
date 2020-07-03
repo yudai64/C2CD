@@ -47,3 +47,4 @@ Route::post('product/confirm', 'ProductController@confirm')->name('product.confi
 Route::get('keyword', 'SearchController@keyword')->name('search.keyword');
 Route::get('category/{id}', 'SearchController@category');
 
+Route::get('shoppingcart', 'PurchaseController@cart')->name('purchase.cart');

@@ -89,15 +89,18 @@ class ProductController extends Controller
         $user = Auth::user();
         if($user->id == $product->user_id){
             $url = "mypage/productedit";
-           $button = "編集する";
+            $button = "編集する";
+            $method ="GET";
         }else{
-            $url = "product/shoppingcart";
+            $url = "shoppingcart";
             $button = "カートに入れる";
+            $method = "POST";
         }
         return view('product.show', [
             'product' => $product,
-           'url'=> $url,
-           'button' => $button
+            'url'=> $url,
+            'button' => $button,
+            'method' => $method
 
         ]);
     }
