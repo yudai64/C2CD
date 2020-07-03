@@ -7,6 +7,7 @@ use App\Http\Requests\ProductRequest;
 use App\Product;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -84,24 +85,15 @@ class ProductController extends Controller
         ]);
     }
 
+  
     public function show(Product $product)
     {
         $user = Auth::user();
-        if($user->id == $product->user_id){
-            $url = "mypage/productedit";
-            $button = "編集する";
-            $method ="GET";
-        }else{
-            $url = "shoppingcart";
-            $button = "カートに入れる";
-            $method = "POST";
-        }
         return view('product.show', [
             'product' => $product,
-            'url'=> $url,
-            'button' => $button,
-            'method' => $method
+       
 
         ]);
-    }
+    
+
 }
