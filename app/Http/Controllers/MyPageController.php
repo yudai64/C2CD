@@ -107,9 +107,19 @@ class MyPageController extends Controller
         $product->category_id = $request->category_id;
         $product->status_id = $request->status_id;
         $product->describe = $request->describe;
-        $product->image = $request->image;
+
+        $image = $request->file('image');
+        if(is_null($image)){
+            $product->image = $product->image;
+        } else {
+            $path = $image->store('public/product');
+            $read_path = str_replace('public/', 'storage/', $path);
+            $product->image = $read_path;
+        }
+
 
         $product->save();
         return redirect('/mypage/listings');
+
     }
 }

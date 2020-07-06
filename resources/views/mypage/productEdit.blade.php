@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('出品情報変更') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/mypage/listing/productUpdate">
+                    <form method="POST" action="/mypage/listing/productUpdate" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div class="pl-2 text-center mb-4">
