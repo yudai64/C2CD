@@ -21,6 +21,11 @@
                       <div class="clearfix">
                         <p class="text-center mt-5">{{ $product->product_name }}</p>
                         <p class="text-center">{{ $product->price }}円 × {{ $product->amount }}個</p>
+                        <form class="text-center" method="post" action="{{ route('purchase.delete')}}">
+                          @csrf
+                          <input type="hidden" name="id" value="{{ $product->cart_id }}"/>
+                          <button type="submit" class="btn btn-outline-danger">{{ __('カートから削除') }}</button>
+                        </form>
                       </div>
 
                     </div>

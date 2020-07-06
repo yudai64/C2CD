@@ -57,7 +57,7 @@
                             <label for="describe" class="col-md-4 col-form-label text-md-right">{{ __('詳細') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="describe" class="form-control @error('describe') is-invalid @enderror" name="describe" value="{{ old('describe') }}" required autocomplete="describe" rows="20" col="50"></textarea>
+                                <textarea id="describe" class="form-control @error('describe') is-invalid @enderror" name="describe" required autocomplete="describe" rows="20" col="50">{{ old('describe') }}</textarea>
 
                                 @error('describe')
                                     <span class="invalid-feedback" role="alert">
@@ -71,11 +71,11 @@
                             <label for="category_id" class="col-md-4 col-form-label text-md-right">{{ __('カテゴリー') }}</label>
 
                             <div class="col-md-6">
-                                <select id="category_id" class="form-control @error('category_id') is-invalid @enderror" name="category_id" value="{{ old('category_id') }}" required autocomplete="category_id">
+                                <select id="category_id" class="form-control @error('category_id') is-invalid @enderror" name="category_id" required autocomplete="category_id">
                                     <option value="">選択してください</option>
-                                    <option value="1">カテゴリー1</option>
-                                    <option value="2">カテゴリー2</option>
-                                    <option value="3">カテゴリー3</option>
+                                    <option value="1" @if(old('category_id') == 1) selected @endif>カテゴリー1</option>
+                                    <option value="2" @if(old('category_id') == 2) selected @endif>カテゴリー2</option>
+                                    <option value="3" @if(old('category_id') == 3) selected @endif>カテゴリー3</option>
                                 </select>
 
                                 @error('category_id')
@@ -90,7 +90,7 @@
                             <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('画像') }}</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="file" class="@error('image') is-invalid @enderror" value="{{ old('image') }}" name="image">
+                                <input id="image" type="file" class="@error('image') is-invalid @enderror" value="{{ old('image') }}" name="image" required>
 
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">

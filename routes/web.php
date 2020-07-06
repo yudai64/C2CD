@@ -52,3 +52,5 @@ Route::get('keyword', 'SearchController@keyword')->name('search.keyword');
 Route::get('category/{id}', 'SearchController@category');
 
 Route::get('shoppingcart', 'PurchaseController@cart')->name('purchase.cart');
+Route::post('purchase/add', 'PurchaseController@add')->name('purchase.add');
+Route::post('purchase/delete', 'PurchaseController@delete')->name('purchase.delete');
