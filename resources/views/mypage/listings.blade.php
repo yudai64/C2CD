@@ -15,7 +15,7 @@
           
          <div class="row  justify-content-center">
           <div class="col-lg-4">
-            <a href="http://127.0.0.1:8000/product/{{ $product->id}}">
+            <a href="http://127.0.0.1:8000/mypage/listing/{{ $product->id}}">
               <img src="http://127.0.0.1:8000/{{ $product->image}}" width="80" height="80" class="card-img h-100" alt="...">
               </a>
           </div>

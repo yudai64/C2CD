@@ -40,6 +40,10 @@ Route::get('/mypage/listings','MypageController@listings')->name('mypage.listing
 Route::get('mypage/profile', 'MyPageController@profile');
 Route::get('mypage/profile/edit', 'MyPageController@edit');
 Route::patch('mypage/profile/update', 'MyPageController@update');
+Route::get('mypage/listing/{id}', 'MypageController@listing');
+Route::get('mypage/listing/{id}/edit','MypageController@editProduct');
+
+
 
 Route::resource('product', 'ProductController');
 Route::post('product/confirm', 'ProductController@confirm')->name('product.confirm');

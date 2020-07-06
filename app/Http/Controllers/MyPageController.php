@@ -68,4 +68,35 @@ class MyPageController extends Controller
             'products' => $products
         ]);
     }
+
+    
+    public function listing($id)
+    {
+        $product = DB::table('products')->where('products.id',$id)->first();
+
+            if($product->status_id == 1 || $product->status_id == 2){
+            $url = "/mypage/listing/{$product->id}/edit";
+           $button = "編集する";
+            }else{
+                $url = "/mypage/listings";
+                $button = "戻る";
+            }
+      
+        return view('mypage/listing', [
+            'product' => $product,
+           'url'=> $url,
+           'button' => $button
+
+        ]);
+    }
+    public function editProduct($id)
+    {
+        $product = DB::table('products')->where('products.id',$id)->first();
+
+        return view('mypage/productEdit',[
+         'product' => $product]);
+    }
+
+    
+   
 }
