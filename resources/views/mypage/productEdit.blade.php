@@ -28,8 +28,11 @@
 
                             <div class="col-md-6">
                                 <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $product->price }}" required autocomplete="price">
-
-                           
+                                @error('price')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -38,8 +41,11 @@
 
                             <div class="col-md-6">
                                 <input id="amount" type="text" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ $product->amount }}" required autocomplete="amount">
-
-                   
+                                @error('amount')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
@@ -48,9 +54,9 @@
                             <div class="col-md-6">
                                 <select id="category_id" class="form-control @error('category_id') is-invalid @enderror" name="category_id" value="{{ $product->category_id }}"  required autocomplete="category_id">
                                     <option value="">選択してください</option>
-                                    <option value="1">カテゴリー1</option>
-                                    <option value="2">カテゴリー2</option>
-                                    <option value="3">カテゴリー3</option>
+                                    <option value="1" @if(old('category_id') == 1) selected @endif>カテゴリー1</option>
+                                    <option value="2" @if(old('category_id') == 2) selected @endif>カテゴリー2</option>
+                                    <option value="3" @if(old('category_id') == 3) selected @endif>カテゴリー3</option>
                                 </select>
 
                                 @error('category_id')
@@ -66,8 +72,8 @@
                             <div class="col-md-6">
                                 <select id="status_id" class="form-control @error('status_id') is-invalid @enderror" name="status_id" value="{{ $product->status_id }}"  required autocomplete="status_id">
                                     <option value="">選択してください</option>
-                                    <option value="1">出品中</option>
-                                    <option value="2">停止中</option>
+                                    <option value="1" @if(old('status_id') == 1) selected @endif>出品中</option>
+                                    <option value="2" @if(old('status_id') == 2) selected @endif>停止中</option>
                                 </select>
 
                                 @error('status_id')

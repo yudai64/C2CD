@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\DB;
@@ -97,7 +97,7 @@ class MyPageController extends Controller
         'product' => $product]);
     }
 
-    public function productUpdate(Request $request)
+    public function productUpdate(ProductRequest $request)
     {
         $id = $request->id;
         $product = Product::find($id);
