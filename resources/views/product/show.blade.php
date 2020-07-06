@@ -26,7 +26,7 @@
                     </div>
                     <div class="pl-2">
                       <span id="category_id">カテゴリー : </span>
-                      {{ $product->category_id }}
+                      {{ $category }}
                     </div>
                     <div class="pl-2">
                       <span id="describe">詳細 : </span>

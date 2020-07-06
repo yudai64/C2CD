@@ -73,6 +73,7 @@ class MyPageController extends Controller
     public function listing($id)
     {
         $product = DB::table('products')->where('products.id',$id)->first();
+        $category = DB::table('categories')->where('id', "=", $product->category_id)->value('category_name');
 
             if($product->status_id == 1 || $product->status_id == 2){
             $url = "/mypage/listing/{$product->id}/edit";
@@ -85,16 +86,18 @@ class MyPageController extends Controller
         return view('mypage/listing', [
             'product' => $product,
             'url'=> $url,
-            'button' => $button
+            'button' => $button,
+            'category' => $category
 
         ]);
     }
     public function editProduct($id)
     {
         $product = DB::table('products')->where('products.id',$id)->first();
-
+        
         return view('mypage/productEdit',[
-        'product' => $product]);
+        'product' => $product,
+        ]);
     }
 
     public function productUpdate(ProductRequest $request)

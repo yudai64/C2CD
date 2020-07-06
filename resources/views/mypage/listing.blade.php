@@ -26,14 +26,14 @@
                     </div>
                     <div class="pl-2">
                       <span id="category_id">カテゴリー : </span>
-                      {{ $product->category_id }}
+                      {{ $category }}
                     </div>
                     <div class="pl-2">
                       <span id="describe">詳細 : </span>
                       {{ $product->describe }}
                     </div>
 
-                     <button type="submit" class="btn btn-primary ml-2 mt-3">{{ __($button) }}</button>
+                    <button type="submit" class="btn btn-primary ml-2 mt-3">{{ __($button) }}</button>
                   </form>
                 </div>
             </div>

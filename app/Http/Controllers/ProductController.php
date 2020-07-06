@@ -23,7 +23,6 @@ class ProductController extends Controller
 
     public function confirm(ProductRequest $request, Product $product)
     {
-        // dd($request->file('image'));
         $image = $request->file('image');
         $temp_path = $image->store('public/temp');
         $read_temp_path = str_replace('public/', 'storage/', $temp_path);
@@ -41,7 +40,7 @@ class ProductController extends Controller
             'price' => $price,
             'amount' => $amount,
             'describe' => $describe,
-            'category_id' => $category_id
+            'category_id' => $category_id,
         );
 
         $request->session()->put('post_data', $post_data);
@@ -87,10 +86,12 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        $user = Auth::user();
+        $category_id = $product->category_id;
+        $category = DB::table('categories')->where('id', '=', $category_id)->value('category_name');
 
         return view('product.show', [
             'product' => $product,
+            'category' => $category
         ]);
     }
 }
