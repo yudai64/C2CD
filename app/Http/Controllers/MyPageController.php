@@ -46,7 +46,7 @@ class MyPageController extends Controller
             'email'      => 'required|email|unique:users,email,'.Auth::user()->email.',email',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password',
-           ]);
+            ]);
         
         $user_id = Auth::id();
         $user = User::find($user_id);
@@ -76,16 +76,16 @@ class MyPageController extends Controller
 
             if($product->status_id == 1 || $product->status_id == 2){
             $url = "/mypage/listing/{$product->id}/edit";
-           $button = "編集する";
+            $button = "編集する";
             }else{
                 $url = "/mypage/listings";
                 $button = "戻る";
             }
-      
+
         return view('mypage/listing', [
             'product' => $product,
-           'url'=> $url,
-           'button' => $button
+            'url'=> $url,
+            'button' => $button
 
         ]);
     }
@@ -94,9 +94,22 @@ class MyPageController extends Controller
         $product = DB::table('products')->where('products.id',$id)->first();
 
         return view('mypage/productEdit',[
-         'product' => $product]);
+        'product' => $product]);
     }
 
-    
-   
+    public function productUpdate(Request $request)
+    {
+        $id = $request->id;
+        $product = Product::find($id);
+        $product->product_name = $request->product_name;
+        $product->price = $request->price;
+        $product->amount = $request->amount;
+        $product->category_id = $request->category_id;
+        $product->status_id = $request->status_id;
+        $product->describe = $request->describe;
+        $product->image = $request->image;
+
+        $product->save();
+        return redirect('/mypage/listings');
+    }
 }
