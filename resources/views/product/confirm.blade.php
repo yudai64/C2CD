@@ -7,7 +7,7 @@
                 <div class="card-header">出品確認画面</div>
 
                 <div class="card-body">
-                  <form method="POST" action="{{ route('product.store') }}">
+                  <form method="POST" action="{{ route('product.store') }}" class="text-center">
                   @csrf
                     <div class="pl-2 text-center mb-4">
                         <img src="http://127.0.0.1:8000/{{ $post_data['read_temp_path'] }}" width="200" height="200">
