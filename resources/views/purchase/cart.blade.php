@@ -34,6 +34,9 @@
                     @if($total_price)
                       <p class="text-center mt-5">合計金額: {{ $total_price }}円</p>
                     @endif
+                    <form class="text-center mt-3" method="GET" action="{{ route('input-send-info')}}">
+                      <button type="submit" class="btn btn-primary">{{__('購入手続きへ進む')}}</button>
+                    </form>
                   </div>
                 @endif
             </div>

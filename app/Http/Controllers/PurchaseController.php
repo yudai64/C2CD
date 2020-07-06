@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class PurchaseController extends Controller
 {
@@ -45,5 +46,29 @@ class PurchaseController extends Controller
     {
         DB::table('carts')->where('id', '=', $request->id)->delete();
         return redirect('shoppingcart');
+    }
+
+    public function inputSendInfo()
+    {
+        $user_id = Auth::id();
+        $carts = DB::table('carts')->where('user_id', '=', $user_id)->get();
+        if(count($carts) == 0) {
+            return redirect('shoppingcart');
+        }
+        return view('/purchase/inputSendInfo', [
+            'profile' => User::find($user_id)
+        ]);
+    }
+
+    public function inputSettlementInfo(Request $request)
+    {
+        //直アクセスのとき(改善の余地あり)
+        $token = $request->_token;
+        if(is_null($token)) {
+            return redirect('shoppingcart');
+        }
+
+        $post_data = $request->all();
+        return view('/purchase/inputSettlementInfo');
     }
 }
