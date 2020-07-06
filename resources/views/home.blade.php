@@ -3,7 +3,7 @@
 @section('content')
 <div class="container text-center">
 @isset($category)
-    カテゴリー: {{ $category }}での検索結果
+    {{ $category }}での検索結果
 @endisset
 <div class="row mx-auto mt-3">
             @if(count($products) === 0)
