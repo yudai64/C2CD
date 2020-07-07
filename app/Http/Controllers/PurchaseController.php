@@ -63,17 +63,22 @@ class PurchaseController extends Controller
     public function inputSettlementInfo(Request $request)
     {
         //直アクセスのとき(改善の余地あり)
-        $token = $request->_token;
-        if(is_null($token)) {
-            return redirect('shoppingcart');
-        }
+        // $token = $request->_token;
+        // if(is_null($token)) {
+        //     return redirect('shoppingcart');
+        // }
 
         $post_data = $request->all();
         return view('/purchase/inputSettlementInfo');
     }
 
-    public function determine()
+    public function determine(Request $request)
     {
+        $request->validate([
+            'card_number'      => 'required|digits:16',
+            'security_code' => 'required|digits:3',
+            ]);
+
         return view('/purchase/complete');
     }
 }

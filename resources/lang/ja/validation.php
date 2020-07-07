@@ -95,6 +95,14 @@ return [
             'required' => 'パスワードを再入力してください',
             'same' => 'パスワードの値と一致しません。'
         ],
+
+        'card_number' => [
+            'digits' => '16桁の半角数字で入力してください'
+        ],
+
+        'security_code' => [
+            'digits' => '3桁の半角数字で入力してください'
+        ]
     ],
 
     /*
@@ -109,12 +117,14 @@ return [
     */
 
     'attributes' => [
-      'user_name' => '名前',
-      'email' => 'メールアドレス',
-      'postal_code' => '郵便番号',
-      'address' => '住所',
-      'password' => 'パスワード',
-      'password-confirm' => '確認パスワード'
+    'user_name' => '名前',
+    'email' => 'メールアドレス',
+    'postal_code' => '郵便番号',
+    'address' => '住所',
+    'password' => 'パスワード',
+    'password-confirm' => '確認パスワード',
+    'card_number' => 'カード番号',
+    'security_code' => 'セキュリティーコード'
     ],
 
 ];
