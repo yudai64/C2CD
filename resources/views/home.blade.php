@@ -7,7 +7,7 @@
 @endisset
 <div class="row mx-auto mt-3">
             @if(count($products) === 0)
-                <p class="mx-auto">このカテゴリーの商品は見つかりませんでした。</p>
+                <p class="mx-auto">該当する商品は見つかりませんでした。</p>
             @else
                 @foreach($products as $product)
                 <div class="col-md-3 mt-5 text-center">
