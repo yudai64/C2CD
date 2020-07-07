@@ -53,7 +53,6 @@ class ProductController extends Controller
     public function store(Request $request, Product $product)
     {
         $post_data = session()->get('post_data');
-        // var_dump($post_data);
         $temp_path = $post_data['temp_path'];
         $read_temp_path = $post_data['read_temp_path'];
 
