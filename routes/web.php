@@ -58,3 +58,4 @@ Route::post('purchase/delete', 'PurchaseController@delete')->name('purchase.dele
 
 Route::get('input-send-info', 'PurchaseController@inputSendInfo')->name('input-send-info');
 Route::match(['get', 'post'], 'input-settlement-info', 'PurchaseController@inputSettlementInfo')->name('input-settlement-info');
+Route::post('determine', 'PurchaseController@determine')->name('purchase.determine');

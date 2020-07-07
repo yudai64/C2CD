@@ -71,4 +71,9 @@ class PurchaseController extends Controller
         $post_data = $request->all();
         return view('/purchase/inputSettlementInfo');
     }
+
+    public function determine()
+    {
+        return view('/purchase/complete');
+    }
 }

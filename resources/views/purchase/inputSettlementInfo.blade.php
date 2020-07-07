@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('決済情報画面') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('input-settlement-info') }}">
+                    <form method="POST" action="{{ route('purchase.determine') }}">
                         @csrf
                         <div class="form-group row">
                             <label for="card_number" class="col-md-4 col-form-label text-md-right">{{ __('カード番号') }}</label>
