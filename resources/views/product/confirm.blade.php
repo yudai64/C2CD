@@ -25,8 +25,8 @@
                       {{ $post_data['amount'] }}個
                     </div>
                     <div class="pl-2">
-                      <span id="category_id">カテゴリー : </span>
-                      {{ $post_data['category_id'] }}
+                      <span id="category">カテゴリー : </span>
+                      {{ $post_data['category'] }}
                     </div>
                     <div class="pl-2">
                       <span id="describe">詳細 : </span>

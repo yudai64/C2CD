@@ -32,6 +32,7 @@ class ProductController extends Controller
         $amount = $request->amount;
         $describe = $request->describe;
         $category_id = $request->category_id;
+        $category = DB::table('categories')->where('id', '=', $category_id)->value('category_name');
         
         $post_data = array(
             'temp_path' => $temp_path,
@@ -41,6 +42,7 @@ class ProductController extends Controller
             'amount' => $amount,
             'describe' => $describe,
             'category_id' => $category_id,
+            'category' => $category,
         );
 
         $request->session()->put('post_data', $post_data);
