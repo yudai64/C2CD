@@ -75,20 +75,32 @@ class MyPageController extends Controller
         $product = DB::table('products')->where('products.id',$id)->first();
         $category = DB::table('categories')->where('id', "=", $product->category_id)->value('category_name');
 
-            if($product->status_id == 1 || $product->status_id == 2){
-            $url = "/mypage/listing/{$product->id}/edit";
-            $button = "編集する";
-            }else{
-                $url = "/mypage/listings";
-                $button = "戻る";
-            }
+        //出品中or停止中の商品のみ編集可能
+        if($product->status_id == 1 || $product->status_id == 2){
+        $url = "/mypage/listing/{$product->id}/edit";
+        $button = "編集する";
+        }else{
+            $url = "/mypage/listings";
+            $button = "戻る";
+        }
+
+        switch($product->status_id) {
+            case 1:
+                $switchButton = '出品停止';
+            break;
+            case 2:
+                $switchButton = '出品再開';
+            break;
+            default:
+                $switchButton = '表示なし';
+        }
 
         return view('mypage/listing', [
             'product' => $product,
             'url'=> $url,
+            'category' => $category,
             'button' => $button,
-            'category' => $category
-
+            'switchButton' => $switchButton,
         ]);
     }
     public function editProduct($id)
@@ -102,13 +114,11 @@ class MyPageController extends Controller
 
     public function productUpdate(ProductRequest $request)
     {
-        $id = $request->id;
-        $product = Product::find($id);
+        $product = Product::find($request->id);
         $product->product_name = $request->product_name;
         $product->price = $request->price;
         $product->amount = $request->amount;
         $product->category_id = $request->category_id;
-        $product->status_id = $request->status_id;
         $product->describe = $request->describe;
 
         $image = $request->file('image');
@@ -120,9 +130,24 @@ class MyPageController extends Controller
             $product->image = $read_path;
         }
 
-
         $product->save();
         return redirect('/mypage/listings');
 
+    }
+
+    public function switch(Request $request)
+    {
+        $product = Product::find($request->id);
+
+        if($product->status_id ==1){
+            $product->status_id = 2;
+        } else if($product->status_id == 2) {
+            $product->status_id = 1;
+        } else {
+            $product->status_id = $product->status_id;
+        }
+
+        $product->save();
+        return redirect('/mypage/listings');
     }
 }

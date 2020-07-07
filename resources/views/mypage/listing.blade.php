@@ -7,8 +7,7 @@
                 <div class="card-header">商品詳細画面</div>
 
                 <div class="card-body">
-                  <form method="GET" action="{{$url}}" class="text-center">
-                  @csrf
+                  <div class="text-center">
                     <div class="pl-2 text-center mb-4">
                         <img src="http://127.0.0.1:8000/{{ $product->image }}" width="200" height="200">
                     </div>
@@ -32,9 +31,21 @@
                       <span id="describe">詳細 : </span>
                       {{ $product->describe }}
                     </div>
+                  </div>
 
-                    <button type="submit" class="btn btn-primary ml-2 mt-3">{{ __($button) }}</button>
+                    <form method="GET" action="{{$url}}" class="text-center">
+                    @csrf
+                      <button type="submit" class="btn btn-primary mt-3">{{ __($button) }}</button>
+                    </form>
+
+                  @if($product->status_id == 1 or $product->status_id ==2)
+                  <form method="POST" action="{{ route('statusSwitch') }}" class="text-center">
+                  @csrf
+                    <input type="hidden" name="id" value={{ $product->id }}>
+                    <button type="submit" class="btn btn-outline-success mt-3">{{__($switchButton)}}</button>
                   </form>
+                  @endif
+
                 </div>
             </div>
         </div>
