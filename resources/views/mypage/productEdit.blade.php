@@ -54,9 +54,9 @@
                             <div class="col-md-6">
                                 <select id="category_id" class="form-control @error('category_id') is-invalid @enderror" name="category_id" value="{{ $product->category_id }}"  required autocomplete="category_id">
                                     <option value="">選択してください</option>
-                                    <option value="1" @if(old('category_id') == 1) selected @endif>カテゴリー1</option>
-                                    <option value="2" @if(old('category_id') == 2) selected @endif>カテゴリー2</option>
-                                    <option value="3" @if(old('category_id') == 3) selected @endif>カテゴリー3</option>
+                                    <option value="1" @if($product->category_id == 1 or old('category_id') == 1) selected @endif>カテゴリー1</option>
+                                    <option value="2" @if($product->category_id == 2 or  old('category_id') == 2) selected @endif>カテゴリー2</option>
+                                    <option value="3" @if($product->category_id == 3 or old('category_id') == 3) selected @endif>カテゴリー3</option>
                                 </select>
 
                                 @error('category_id')
@@ -72,8 +72,8 @@
                             <div class="col-md-6">
                                 <select id="status_id" class="form-control @error('status_id') is-invalid @enderror" name="status_id" value="{{ $product->status_id }}"  required autocomplete="status_id">
                                     <option value="">選択してください</option>
-                                    <option value="1" @if(old('status_id') == 1) selected @endif>出品中</option>
-                                    <option value="2" @if(old('status_id') == 2) selected @endif>停止中</option>
+                                    <option value="1" @if($product->status_id == 1 or old('status_id') == 1) selected @endif>出品中</option>
+                                    <option value="2" @if($product->status_id == 2 or old('status_id') == 2) selected @endif>停止中</option>
                                 </select>
 
                                 @error('status_id')
