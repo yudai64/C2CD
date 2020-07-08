@@ -44,7 +44,7 @@ Route::get('mypage/listing/{id}', 'MypageController@listing');
 Route::get('mypage/listing/{id}/edit','MypageController@editProduct');
 Route::patch('mypage/listing/productUpdate', 'MypageController@productUpdate');
 Route::post('mypage/product-status-switch', 'MypageController@switch')->name('statusSwitch');
-
+Route::get('mypage/purchaseHistory','MyPageController@purchaseHistory');
 
 
 Route::resource('product', 'ProductController');
