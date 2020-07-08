@@ -25,20 +25,6 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('メールアドレス') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $profile->email }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
                             <label for="postal_code" class="col-md-4 col-form-label text-md-right">{{ __('郵便番号') }}</label>
 
                             <div class="col-md-6">
@@ -84,7 +70,7 @@
                             <label for="delivery_date" class="col-md-4 col-form-label text-md-right">{{ __('お届け希望日') }}</label>
 
                             <div class="col-md-6">
-                                <input id="delivery_date" type="text" id="datepicker" class="form-control @error('delivery_date') is-invalid @enderror" name="delivery_date" autocomplete="delivery_date">
+                            <input id="delivery_date" type="text" id="datepicker" class="form-control @error('delivery_date') is-invalid @enderror" name="delivery_date" autocomplete="delivery_date">
 
                                 @error('delivery_date')
                                     <span class="invalid-feedback" role="alert">
