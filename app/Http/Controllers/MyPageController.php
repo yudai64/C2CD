@@ -62,7 +62,12 @@ class MyPageController extends Controller
     {
         $user = Auth::user();
         
-        $products = DB::table('products')->where('products.user_id', $user->id)->join('statuses','products.status_id', '=', 'statuses.id')->orderByRaw('products.updated_at DESC')->select('products.id', 'products.product_name', 'products.image', 'products.price', 'products.amount', 'products.describe', 'products.user_id', 'products.category_id', 'products.status_id', 'statuses.status_name')->paginate(20);
+        $products = DB::table('products')
+        ->where('products.user_id', $user->id)
+        ->join('statuses','products.status_id', '=', 'statuses.id')
+        ->orderByRaw('products.updated_at DESC')
+        ->select('products.id', 'products.product_name', 'products.image', 'products.price', 'products.amount', 'products.describe', 'products.user_id', 'products.category_id', 'products.status_id', 'statuses.status_name')
+        ->paginate(20);
 
         return view('mypage/listings', [
             'products' => $products
@@ -149,5 +154,22 @@ class MyPageController extends Controller
 
         $product->save();
         return redirect('/mypage/listings');
+    }
+
+    public function purchaseHistory()
+    {
+        $user = Auth::user();
+        
+        $products = DB::table('purchase_histories')
+        ->where('purchase_histories.user_id', $user->id)
+        ->join('products','purchase_histories.product_id','=','products.id')
+        ->join('statuses','products.status_id', '=', 'statuses.id')
+        ->orderByRaw('purchase_histories.updated_at DESC')
+        ->get();
+        //->paginate(20);
+
+        return view('mypage/purchaseHistory', [
+            'products' => $products
+        ]);
     }
 }
