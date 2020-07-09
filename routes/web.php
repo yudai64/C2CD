@@ -56,7 +56,7 @@ Route::get('category/{id}', 'SearchController@category');
 Route::get('shoppingcart', 'PurchaseController@cart')->name('purchase.cart');
 Route::post('purchase/add', 'PurchaseController@add')->name('purchase.add');
 Route::post('purchase/delete', 'PurchaseController@delete')->name('purchase.delete');
-
 Route::get('input-send-info', 'PurchaseController@inputSendInfo')->name('input-send-info');
 Route::match(['get', 'post'], 'input-settlement-info', 'PurchaseController@inputSettlementInfo')->name('input-settlement-info');
+Route::post('purchase/confirm', 'purchaseController@confirm')->name('purchase.confirm');
 Route::post('determine', 'PurchaseController@determine')->name('purchase.determine');

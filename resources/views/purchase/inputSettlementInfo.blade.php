@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('決済情報画面') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('purchase.determine') }}">
+                    <form method="POST" action="{{ route('purchase.confirm') }}">
                         @csrf
                         <div class="form-group row">
                             <label for="card_number" class="col-md-4 col-form-label text-md-right">{{ __('カード番号') }}</label>
@@ -58,10 +58,16 @@
                             </div>
                         </div>
 
+                        <input type="hidden" name="destination_name"          value= @if(isset($destination_name))          "{{ $destination_name }}"          @else "{{old('destination_name')}}" @endif/>
+                        <input type="hidden" name="destination_postal_code" value= @if(isset($destination_postal_code)) "{{ $destination_postal_code }}" @else "{{old('destination_postal_code')}}" @endif/>
+                        <input type="hidden" name="destination_address"       value= @if(isset($destination_address))       "{{ $destination_address }}"       @else "{{old('destination_address')}}" @endif/>
+                        <input type="hidden" name="phone_number"         value= @if(isset($phone_number))          "{{ $phone_number }}"         @else "{{old('phone_number')}}" @endif/>
+                        <input type="hidden" name="delivery_date"            value= @if(isset($delivery_date))            "{{ $delivery_date }}"            @else "{{old('delivery_date')}}" @endif/>
+
                         <div class="form-group row mt-4">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('購入を確定する') }}
+                                    {{ __('購入情報を確認') }}
                                 </button>
                             </div>
                         </div>

@@ -11,12 +11,12 @@
                     <form method="POST" action="{{ route('input-settlement-info') }}">
                         @csrf
                         <div class="form-group row">
-                            <label for="user_name" class="col-md-4 col-form-label text-md-right">{{ __('名前') }}</label>
+                            <label for="destination_name" class="col-md-4 col-form-label text-md-right">{{ __('名前') }}</label>
 
                             <div class="col-md-6">
-                                <input id="user_name" type="text" class="form-control @error('user_name') is-invalid @enderror" name="user_name" value="{{ $profile->user_name }}" required autocomplete="user_name">
+                                <input id="destination_name" type="text" class="form-control @error('destination_name') is-invalid @enderror" name="destination_name" value="{{ $profile->user_name }}" required autocomplete="user_name">
 
-                                @error('user_name')
+                                @error('destination_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -25,12 +25,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="postal_code" class="col-md-4 col-form-label text-md-right">{{ __('郵便番号') }}</label>
+                            <label for="destination_postal_code" class="col-md-4 col-form-label text-md-right">{{ __('郵便番号') }}</label>
 
                             <div class="col-md-6">
-                                <input id="postal_code" type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ $profile->postal_code }}" required autocomplete="postal_code" placeholder="123-4567">
+                                <input id="destination_postal_code" type="text" class="form-control @error('destination_postal_code') is-invalid @enderror" name="destination_postal_code" value="{{ $profile->postal_code }}" required autocomplete="destination_postal_code" placeholder="123-4567">
 
-                                @error('postal_code')
+                                @error('destination_postal_code')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -39,12 +39,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('住所') }}</label>
+                            <label for="destination_address" class="col-md-4 col-form-label text-md-right">{{ __('住所') }}</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $profile->address }}" required autocomplete="address">
+                                <input id="destination_address" type="text" class="form-control @error('destination_address') is-invalid @enderror" name="destination_address" value="{{ $profile->address }}" required autocomplete="destination_address">
 
-                                @error('address')
+                                @error('destination_address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
