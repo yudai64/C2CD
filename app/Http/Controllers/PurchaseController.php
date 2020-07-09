@@ -69,8 +69,6 @@ class PurchaseController extends Controller
         // if(is_null($token)) {
         //     return redirect('shoppingcart');
         // }
-
-        \Debugbar::addMessage($request->all());
         
         return view('/purchase/inputSettlementInfo', [
             'destination_name' => $request->destination_name,
@@ -134,9 +132,7 @@ class PurchaseController extends Controller
         }
 
         DB::table('carts')->where('user_id', '=', $user_id)->delete();
-        
-        \Debugbar::addMessage($carts);
-        \Debugbar::addMessage($request->all());
+
         return view('/purchase/complete');
     }
 }
