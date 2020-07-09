@@ -23,6 +23,7 @@ class CreateDeliveriesTable extends Migration
             $table->string('destination_address');
             $table->char('phone_number', 13);
             $table->date('delivery_date');
+            $table->foreignId('delivery_status_id')->constrained()->default(1);
             $table->timestamps();
         });
     }
