@@ -92,16 +92,21 @@ return [
         ],
         
         'password_confirmation' => [
-            'required' => 'パスワードを再入力してください',
+            'required' => 'パスワードを再入力してください。',
             'same' => 'パスワードの値と一致しません。'
         ],
 
         'card_number' => [
-            'digits' => '16桁の半角数字で入力してください'
+            'digits' => '16桁の半角数字で入力してください。'
         ],
 
         'security_code' => [
-            'digits' => '3桁の半角数字で入力してください'
+            'digits' => '3桁の半角数字で入力してください。'
+        ],
+
+        'delivery_date' => [
+            'date' => 'YYYY-MM-DDの形式で入力してください。',
+            'after' => 'お届け希望日は明日以降の日付にしてください。'
         ]
     ],
 
@@ -124,7 +129,8 @@ return [
     'password' => 'パスワード',
     'password-confirm' => '確認パスワード',
     'card_number' => 'カード番号',
-    'security_code' => 'セキュリティーコード'
+    'security_code' => 'セキュリティーコード',
+    'delivery_date' => 'お届け希望日'
     ],
 
 ];

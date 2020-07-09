@@ -69,6 +69,13 @@ class PurchaseController extends Controller
         // if(is_null($token)) {
         //     return redirect('shoppingcart');
         // }
+        $request->validate([
+            'destination_name' => ['required', 'string', 'max:255'],
+            'destination_postal_code' => ['required'],
+            'destination_address' => ['required'],
+            'phone_number' => ['required'],
+            'delivery_date' => 'required|date|after:tomorrow'
+        ]);
         
         return view('/purchase/inputSettlementInfo', [
             'destination_name' => $request->destination_name,
