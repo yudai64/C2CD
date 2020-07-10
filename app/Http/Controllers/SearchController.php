@@ -10,7 +10,7 @@ class SearchController extends Controller
     public function keyword(Request $request)
     {
         $keyword = $request->input('keyword');
-        $products = DB::table('products')->where('product_name', 'like', '%'.$keyword.'%', 'and', 'status_id', '=', 1, 'or' ,3)->orderByRaw('updated_at DESC')->paginate(20);
+        $products = DB::table('products')->where('product_name', 'like', '%'.$keyword.'%')->where('status_id', '=', 1, 'or' ,3)->orderByRaw('updated_at DESC')->paginate(20);
 
         return view('home', [
             'products' => $products,
