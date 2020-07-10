@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-header">ショッピングカート</div>
 
-                <div class="card-body">
+                <div class="card-body text-center">
                 @if(count($products) === 0)
                 <p class="mx-auto">現在、カートに商品は入っていません</p>
                 @else
@@ -57,6 +57,15 @@
                     </form>
                   </div>
                 @endif
+                <form class="mt-4" method="GET" action="{{ route('home') }}">
+                  <button type="submit" class="btn btn btn-outline-dark">
+                  @if(count($products) === 0)
+                  {{__('トップへ戻る')}}
+                  @else
+                  {{__('購入を続ける')}}
+                  @endif
+                  </button>
+                </form>
             </div>
         </div>
     </div>
