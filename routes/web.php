@@ -40,11 +40,12 @@ Route::get('/mypage/listings','MypageController@listings')->name('mypage.listing
 Route::get('mypage/profile', 'MyPageController@profile');
 Route::get('mypage/profile/edit', 'MyPageController@edit');
 Route::patch('mypage/profile/update', 'MyPageController@update');
-Route::get('mypage/listing/{id}', 'MypageController@listing');
+Route::get('mypage/listing/{id}', 'MypageController@listing')->name('listing.show');
 Route::get('mypage/listing/{id}/edit','MypageController@editProduct');
 Route::patch('mypage/listing/productUpdate', 'MypageController@productUpdate');
 Route::post('mypage/product-status-switch', 'MypageController@switch')->name('statusSwitch');
 Route::get('mypage/purchaseHistory','MyPageController@purchaseHistory');
+Route::post('mypage/delivery-notice', 'MyPageController@noticeDelivery')->name('noticeDelivery');
 
 
 Route::resource('product', 'ProductController');

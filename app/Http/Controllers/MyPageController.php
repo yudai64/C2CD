@@ -80,6 +80,8 @@ class MyPageController extends Controller
         $product = DB::table('products')->where('products.id',$id)->first();
         $category = DB::table('categories')->where('id', "=", $product->category_id)->value('category_name');
 
+        $buyer_infos = DB::table('purchase_histories')->where('product_id', '=', $product->id)->where('delivery_status_id', '=', 1)->get();
+
         //出品中or停止中の商品のみ編集可能
         if($product->status_id == 1 || $product->status_id == 2){
         $url = "/mypage/listing/{$product->id}/edit";
@@ -106,6 +108,7 @@ class MyPageController extends Controller
             'category' => $category,
             'button' => $button,
             'switchButton' => $switchButton,
+            'buyer_infos' => $buyer_infos,
         ]);
     }
     public function editProduct($id)
@@ -171,5 +174,11 @@ class MyPageController extends Controller
         return view('mypage/purchaseHistory', [
             'products' => $products
         ]);
+    }
+
+    public function noticeDelivery(Request $request)
+    {
+        DB::table('purchase_histories')->where('id', '=', $request->purchase_history_id)->update(['delivery_status_id' => 2]);
+        return redirect()->route('listing.show', ['id' => $request->product_id]);
     }
 }

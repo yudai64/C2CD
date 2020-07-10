@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">商品詳細画面</div>
 
-                <div class="card-body">
+                <div class="card-body text-center">
                   <div class="text-center">
                     <div class="pl-2 text-center mb-4">
                         <img src="http://127.0.0.1:8000/{{ $product->image }}" width="200" height="200">
@@ -46,6 +46,46 @@
                   </form>
                   @endif
 
+                  @if(count($buyer_infos) > 0)
+                  <div class="pt-5">
+                    <h4>お知らせ</h4>
+                    <p>商品が購入されたので以下の宛先に発送をしてください。</br>発送が完了しましたら、発送完了ボタンを押してください。</p>
+                    @foreach($buyer_infos as $info)
+                    <div class="mb-4">
+                      <div class="pl-2">
+                        <span id="user_name">宛名 : </span>
+                        {{ $info->destination_name }}
+                      </div>
+                      <div class="pl-2">
+                        <span id="destination_postal_code">郵便番号 : </span>
+                        {{ $info->destination_postal_code }}
+                      </div>
+                      <div class="pl-2">
+                        <span id="destination_address">住所 : </span>
+                        {{ $info->destination_address }}
+                      </div>
+                      <div class="pl-2">
+                        <span id="phone_number">電話番号 : </span>
+                        {{ $info->phone_number }}
+                      </div>
+                      <div class="pl-2">
+                        <span id="delivery_date">お届け予定日 : </span>
+                        {{ $info->delivery_date }}
+                      </div>
+                      <div class="pl-2">
+                        <span id="amount">個数 : </span>
+                        {{ $info->amount }}個
+                      </div>
+                      <form method="POST" action="{{ route('noticeDelivery')}}">
+                      @csrf
+                        <input type="hidden" name="purchase_history_id" value="{{$info->id}}"/>
+                        <input type="hidden" name="product_id" value="{{$product->id}}"/>
+                        <button class="btn btn-outline-primary btn-sm mt-2">{{__('発送完了')}}</button>
+                      </form>
+                    </div>
+                    @endforeach
+                    </div>
+                  @endif
                 </div>
             </div>
         </div>
