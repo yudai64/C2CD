@@ -50,6 +50,17 @@ class PurchaseController extends Controller
         return redirect('shoppingcart');
     }
 
+    public function decrease(Request $request)
+    {
+        if($request->amount == 0) {
+            DB::table('carts')->where('id', '=', $request->id)->delete();
+        } else {
+            DB::table('carts')->where('id', '=', $request->id)->update(['amount' => $request->amount]);
+        }
+
+        return redirect('shoppingcart');
+    }
+
     public function inputSendInfo()
     {
         $user_id = Auth::id();

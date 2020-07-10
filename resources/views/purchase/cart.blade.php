@@ -23,13 +23,26 @@
                           <img src="http://127.0.0.1:8000/{{ $product->image}}" width="200" height="200">
                         </a>
                       </div>
+
                       <div class="clearfix">
-                        <p class="text-center mt-5">{{ $product->product_name }}</p>
+                        <p class="text-center mt-4">{{ $product->product_name }}</p>
                         <p class="text-center">{{ $product->price }}円 × {{ $product->amount }}個</p>
-                        <form class="text-center" method="post" action="{{ route('purchase.delete')}}">
+
+                        <form class="text-center" method="post" action="{{ route('purchase.decrease')}}">
+                          @csrf
+                          <select name="amount">
+                            @for($i=0; $i<=$product->amount; $i++)
+                            <option value="{{ $i }}" @if($i == $product->amount) selected @endif>{{ $i }}</option>
+                            @endfor
+                          </select>
+                          <input type="hidden" name="id" value="{{ $product->cart_id }}"/>
+                          <button type="submit" class="btn btn-outline-dark btn-sm">{{ __('個数を変更') }}</button>
+                        </form>
+
+                        <form class="text-center mt-3" method="post" action="{{ route('purchase.delete')}}">
                           @csrf
                           <input type="hidden" name="id" value="{{ $product->cart_id }}"/>
-                          <button type="submit" class="btn btn-outline-danger">{{ __('カートから削除') }}</button>
+                          <button type="submit" class="btn btn-outline-danger btn-sm">{{ __('削除') }}</button>
                         </form>
                       </div>
 
