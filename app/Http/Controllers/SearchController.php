@@ -9,7 +9,6 @@ class SearchController extends Controller
 {
     public function keyword(Request $request)
     {
-        \Debugbar::addMessage($request->keyword);
         $keyword = $request->input('keyword');
         $products = DB::table('products')->where('product_name', 'like', '%' .$keyword. '%')->where('status_id', '=', 1)->orderByRaw('updated_at DESC')->paginate(20);
 
