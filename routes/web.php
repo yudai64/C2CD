@@ -47,6 +47,8 @@ Route::post('mypage/product-status-switch', 'MypageController@switch')->name('st
 Route::get('mypage/purchaseHistory','MyPageController@purchaseHistory');
 Route::post('mypage/delivery-notice', 'MyPageController@noticeDelivery')->name('noticeDelivery');
 
+Route::get('mypage/purchase/{id}','MyPageController@purchase')->name('purchase');
+Route::post('mypage/product-status-switch2', 'MypageController@switch2')->name('statusSwitch2');
 
 Route::resource('product', 'ProductController');
 Route::post('product/confirm', 'ProductController@confirm')->name('product.confirm');

@@ -164,8 +164,10 @@ class MyPageController extends Controller
         $user = Auth::user();
         
         $products = DB::table('purchase_histories')
+        ->select('purchase_histories.id as purchase_id','image','product_name','price','product_id','delivery_status_name','delivery_status_id')
         ->where('purchase_histories.user_id', $user->id)
         ->join('products','purchase_histories.product_id','=','products.id')
+        ->join('delivery_statuses','purchase_histories.delivery_status_id','delivery_statuses.id')
         ->join('statuses','products.status_id', '=', 'statuses.id')
         ->orderByRaw('purchase_histories.updated_at DESC')
         ->get();
@@ -181,4 +183,26 @@ class MyPageController extends Controller
         DB::table('purchase_histories')->where('id', '=', $request->purchase_history_id)->update(['delivery_status_id' => 2]);
         return redirect()->route('listing.show', ['id' => $request->product_id]);
     }
+    public function purchase($purchase_id)
+    {
+       // $product = $products;
+        $purchase = DB::table('purchase_histories')->where('id',$purchase_id)->first();
+       $product = DB::table('products')->where('products.id','=',$purchase->product_id)->first();
+       $category = DB::table('categories')->where('id', "=", $product->category_id)->value('category_name');
+       $status = DB::table('delivery_statuses')->where('id','=',$purchase->delivery_status_id)->first();
+        return view('mypage/purchase',[
+            
+            'purchase' => $purchase,
+            'product' => $product,
+            'category' =>$category,
+            'status' =>$status
+        ]);
+}
+
+    public function switch2(Request $request)
+    {
+        DB::table('purchase_histories')->where('id', '=', $request->id)->update(['delivery_status_id' => 3]);
+        return redirect()->route('purchase', ['id' => $request->id]);
+    
+}
 }

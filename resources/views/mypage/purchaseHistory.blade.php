@@ -15,7 +15,7 @@
           
          <div class="row  justify-content-center">
           <div class="col-lg-4">
-            <a href="http://127.0.0.1:8000/mypage/purchase/{{ $product->product_id}}">
+            <a href="http://127.0.0.1:8000/mypage/purchase/{{ $product->purchase_id}}">
               <img src="http://127.0.0.1:8000/{{ $product->image}}" width="80" height="80" class="card-img h-100" alt="...">
               </a>
           </div>
@@ -23,7 +23,7 @@
             <div class="card-body">
               <h4 class="card-title">{{ $product->product_name}}</h4>
               <p class="card-text"> {{ $product->price}}円</br>
-                          {{ $product->status_name}}</p>
+                          {{ $product->delivery_status_name}}</p>
               
             </div>
           </div>
@@ -38,6 +38,7 @@
 
    </div>
 </div>
+
 
 </div>
 @endsection
