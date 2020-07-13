@@ -136,13 +136,21 @@ class PurchaseController extends Controller
                 }
                 return redirect('shoppingcart')->with('message', $message);
             }
+            $sum = DB::table('purchase_histories')
+            ->where('purchase_histories.product_id','=',$cart->product_id)
+            ->where('purchase_histories.user_id','=',$user_id)->first();
+
+            if(is_null($sum)){
+                $product->purchasers_number += 1;
+            }
+
 
             DB::table('purchase_histories')->insert(
                 ['user_id' => $user_id, 'product_id' => $cart->product_id, 'amount' => $cart->amount, 
                 'destination_name' => $request->destination_name, 'destination_postal_code' => $request->destination_postal_code, 'destination_address' => $request->destination_address, 'phone_number' => $request->phone_number, 'delivery_date' => $request->delivery_date, 'delivery_status_id' => 1]
             );
-
-            $product->amount -= $cart->amount;
+           
+           $product->amount -= $cart->amount;
             if($product->amount == 0) {
                 $product->status_id = 3;
             }

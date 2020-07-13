@@ -66,7 +66,7 @@ class MyPageController extends Controller
         ->where('products.user_id', $user->id)
         ->join('statuses','products.status_id', '=', 'statuses.id')
         ->orderByRaw('products.updated_at DESC')
-        ->select('products.id', 'products.product_name', 'products.image', 'products.price', 'products.amount', 'products.describe', 'products.user_id', 'products.category_id', 'products.status_id', 'statuses.status_name')
+        ->select('products.id', 'products.product_name', 'products.image', 'products.price', 'products.amount', 'products.describe', 'products.user_id', 'products.category_id', 'products.status_id', 'statuses.status_name','products.purchasers_number')
         ->paginate(20);
 
         return view('mypage/listings', [

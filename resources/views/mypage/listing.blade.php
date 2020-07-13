@@ -20,7 +20,7 @@
                       {{ $product->price }}円
                     </div>
                     <div class="pl-2">
-                      <span id="amount">数量 : </span>
+                      <span id="amount">在庫数 : </span>
                       {{ $product->amount }}個
                     </div>
                     <div class="pl-2">

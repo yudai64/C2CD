@@ -22,7 +22,9 @@
           <div class="col-lg-8 pl-2">
             <div class="card-body">
               <h4 class="card-title">{{ $product->product_name}}</h4>
-              <p class="card-text"> {{ $product->price}}円</br>
+              <p class="card-text">金額： {{ $product->price}}円</br>
+                                   在庫数： {{ $product->amount}}</br>
+                                   購入者数：{{$product->purchasers_number}}</br>
                           {{ $product->status_name}}</p>
               
             </div>

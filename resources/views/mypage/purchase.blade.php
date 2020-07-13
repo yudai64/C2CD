@@ -45,6 +45,12 @@
                     <input type="hidden" name="id" value={{ $purchase->id }}>
                     <button type="submit" class="btn btn-outline-success">受取完了</button>
                   </form>
+
+                  @else
+                  <form method="GET" action="/mypage/purchaseHistory" class="text-center">
+                    @csrf
+                      <button type="submit" class="btn btn-primary mt-3">戻る</button>
+                    </form>
                   @endif
 
                   </div>
