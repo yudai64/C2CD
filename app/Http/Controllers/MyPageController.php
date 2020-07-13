@@ -145,11 +145,15 @@ class MyPageController extends Controller
 
     public function switch(Request $request)
     {
-        $product = Product::find($request->id);
+        $product_id = $request->id;
+        $product = Product::find($product_id);
 
         if($product->status_id ==1){
+            //公開中の商品を停止にする。カートに商品が入ってた場合は削除する。
             $product->status_id = 2;
+            DB::table('carts')->where('product_id', '=', $product_id)->delete();
         } else if($product->status_id == 2) {
+            //停止中の商品を公開にする
             $product->status_id = 1;
         } else {
             $product->status_id = $product->status_id;
