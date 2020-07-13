@@ -38,7 +38,7 @@
                     </div>
                     
                   @if($purchase->delivery_status_id == 2)
-                  <form method="POST" action="{{ route('statusSwitch2') }}" class="text-center">
+                  <form method="POST" action="{{ route('completeTransaction') }}" class="text-center">
                   @csrf
                   
                   <p class='mt-4'>商品が届きましたら、取引完了ボタンを押してください。</p>

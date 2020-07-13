@@ -46,9 +46,8 @@ Route::patch('mypage/listing/productUpdate', 'MypageController@productUpdate');
 Route::post('mypage/product-status-switch', 'MypageController@switch')->name('statusSwitch');
 Route::get('mypage/purchaseHistory','MyPageController@purchaseHistory');
 Route::post('mypage/delivery-notice', 'MyPageController@noticeDelivery')->name('noticeDelivery');
-
 Route::get('mypage/purchase/{id}','MyPageController@purchase')->name('purchase');
-Route::post('mypage/product-status-switch2', 'MypageController@switch2')->name('statusSwitch2');
+Route::post('mypage/complete-transaction', 'MypageController@completeTransaction')->name('completeTransaction');
 
 Route::resource('product', 'ProductController');
 Route::post('product/confirm', 'ProductController@confirm')->name('product.confirm');
