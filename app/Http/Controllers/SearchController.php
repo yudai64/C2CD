@@ -9,8 +9,9 @@ class SearchController extends Controller
 {
     public function keyword(Request $request)
     {
+        \Debugbar::addMessage($request->keyword);
         $keyword = $request->input('keyword');
-        $products = DB::table('products')->where('product_name', 'like', '%'.$keyword.'%')->where('status_id', '=', 1, 'or' ,3)->orderByRaw('updated_at DESC')->paginate(20);
+        $products = DB::table('products')->where('product_name', 'like', '%' .$keyword. '%')->where('status_id', '=', 1)->orderByRaw('updated_at DESC')->paginate(20);
 
         return view('home', [
             'products' => $products,
@@ -20,7 +21,7 @@ class SearchController extends Controller
 
     public function category($id)
     {
-        $products = DB::table('products')->where('category_id', '=', $id)->orderByRaw('updated_at DESC')->paginate(20);
+        $products = DB::table('products')->where('category_id', '=', $id)->where('status_id', '=', 1)->orderByRaw('updated_at DESC')->paginate(20);
         $category = DB::table('categories')->where('id', $id)->value('category_name');
 
         return view('home', [
