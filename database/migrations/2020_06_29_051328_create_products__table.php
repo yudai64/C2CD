@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->integer('amount');
             $table->text('describe');
+            $table->integer('purchasers_number')->default(0);
             $table->foreignId('user_id')->constrained();
             $table->foreignId('category_id')->constrained();
             $table->foreignId('status_id')->constrained()->default(1);

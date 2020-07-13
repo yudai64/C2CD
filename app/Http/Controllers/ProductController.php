@@ -76,6 +76,7 @@ class ProductController extends Controller
         $product->status_id = 1;
         $product->describe = $post_data['describe'];
         $product->image = $read_path;
+        $product->purchasers_number = 0;
         $product->save();
 
         $id = $product->id;
