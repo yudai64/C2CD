@@ -23,6 +23,11 @@
                       <span id="amount">数量 : </span>
                       {{ $purchase->amount }}個
                     </div>
+                    
+                    <div class="pl-2">
+                      <span id="total_price">小計 : </span>
+                      {{$product->price * $purchase->amount}} 円
+                    </div>
                     <div class="pl-2">
                       <span id="category_id">カテゴリー : </span>
                       {{ $category }}
@@ -43,13 +48,13 @@
                   
                   <p class='mt-4'>商品が届きましたら、取引完了ボタンを押してください。</p>
                     <input type="hidden" name="id" value={{ $purchase->id }}>
-                    <button type="submit" class="btn btn-outline-success">受取完了</button>
+                    <button type="submit" class="btn btn-outline-primary btn-sm mt-2">取引完了</button>
                   </form>
 
                   @else
                   <form method="GET" action="/mypage/purchaseHistory" class="text-center">
                     @csrf
-                      <button type="submit" class="btn btn-primary mt-3">戻る</button>
+                      <button type="submit" class="btn btn-primary btn-sm mt-2">戻る</button>
                     </form>
                   @endif
 

@@ -22,7 +22,10 @@
           <div class="col-lg-8 pl-2">
             <div class="card-body">
               <h4 class="card-title">{{ $product->product_name}}</h4>
-              <p class="card-text"> {{ $product->price}}円</br>
+              <p class="card-text">金額： {{ $product->price}}円</br>
+                個数: {{ $product->buy_amount}}</br>
+                     小計: {{$product->price*$product->buy_amount}}円
+                        </br>
                           {{ $product->delivery_status_name}}</p>
               
             </div>

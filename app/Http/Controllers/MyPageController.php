@@ -197,12 +197,12 @@ class MyPageController extends Controller
         $user = Auth::user();
         
         $products = DB::table('purchase_histories')
-        ->select('purchase_histories.id as purchase_id','image','product_name','price','product_id','delivery_status_name','delivery_status_id')
+        ->select('purchase_histories.id as purchase_id','image','product_name','price','product_id','delivery_status_name','delivery_status_id','purchase_histories.amount as buy_amount')
         ->where('purchase_histories.user_id', $user->id)
         ->join('products','purchase_histories.product_id','=','products.id')
         ->join('delivery_statuses','purchase_histories.delivery_status_id','delivery_statuses.id')
         ->join('statuses','products.status_id', '=', 'statuses.id')
-        ->orderByRaw('purchase_histories.updated_at DESC')
+        ->orderBy('purchase_histories.id','desc')
         ->get();
         //->paginate(20);
 
