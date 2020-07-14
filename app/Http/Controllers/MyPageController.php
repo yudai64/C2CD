@@ -21,7 +21,36 @@ class MyPageController extends Controller
 
     public function getUser()
     {
-        return view('/mypage/main');
+        $user_id = Auth::id();
+
+        $listing_products = DB::table('products')
+        ->where('products.user_id', '=', $user_id)
+        ->where('purchase_histories.delivery_status_id', '=', 1)
+        ->join('purchase_histories', 'products.id', '=', 'purchase_histories.product_id')
+        ->select('purchase_histories.id as purchase_histories_id', 'products.id as product_id', 'products.product_name')
+        ->get();
+
+        $purchase_products = DB::table('purchase_histories')
+        ->where('purchase_histories.user_id', '=', $user_id)
+        ->where('delivery_status_id', '=', 2)
+        ->join('products', 'purchase_histories.product_id', '=', 'products.id')
+        ->select('purchase_histories.id as purchase_histories_id', 'products.product_name')
+        ->get();
+
+        $listing_count = count($listing_products);
+        $purchase_count = count($purchase_products);
+        $count = $listing_count + $purchase_count;
+
+        
+        \Debugbar::addMessage($count);
+
+        return view('/mypage/main', [
+            'listing_products' => $listing_products,
+            'purchase_products' => $purchase_products,
+            'listing_count' => $listing_count,
+            'purchase_count' => $purchase_count,
+            'count' => $count
+        ]);
     }
 
     public function profile()
@@ -207,7 +236,7 @@ class MyPageController extends Controller
     public function completeTransaction(Request $request)
     {
         DB::table('purchase_histories')->where('id', '=', $request->id)->update(['delivery_status_id' => 3]);
-        return redirect()->route('purchase', ['id' => $request->id]);
+        return redirect()->route('purchase.show', ['id' => $request->id]);
     
 }
 }
