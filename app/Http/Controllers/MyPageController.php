@@ -41,9 +41,6 @@ class MyPageController extends Controller
         $purchase_count = count($purchase_products);
         $count = $listing_count + $purchase_count;
 
-        
-        \Debugbar::addMessage($count);
-
         return view('/mypage/main', [
             'listing_products' => $listing_products,
             'purchase_products' => $purchase_products,
