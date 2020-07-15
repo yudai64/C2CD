@@ -11,6 +11,11 @@ use App\Product;
 
 class PurchaseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function cart()
     {
         $user = Auth::user();
