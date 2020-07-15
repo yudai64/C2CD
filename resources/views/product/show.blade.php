@@ -35,7 +35,7 @@
                     <input type="hidden" name="id" value="{{ $product->id }}"/>
 
                     @if(Auth::id() !== $product->user_id)
-                      <label class="mt-5 ml-2">数量: <input type="number" name="amount" max="{{ $product->amount }}" min="0" class=""></label></br>
+                      <label class="mt-5 ml-2">数量: <input type="number" name="amount" max="{{ $product->amount }}" min="1" class=""></label></br>
                       <button type="submit" class="btn btn-primary ml-2 mt-3">{{ __('カートに入れる') }}</button>
                     @endif
                   </form>
