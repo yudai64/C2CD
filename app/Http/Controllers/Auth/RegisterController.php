@@ -9,7 +9,6 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use Request as PostRequest;
 
 class RegisterController extends Controller
 {
@@ -85,15 +84,15 @@ class RegisterController extends Controller
             'email'      => 'required|email|unique:users,email',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password',
-           ]);
+        ]);
 
-        $post_data = PostRequest::all();
+        $post_data = $request->all();
         return view('auth.register2', compact('post_data'));
     }
 
     public function confirm(Request $request)
     {
-        $post_data = PostRequest::all();
+        $post_data = $request->all();
         return view('auth.confirm', compact('post_data'));
     }
 
