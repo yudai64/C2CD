@@ -27,6 +27,8 @@
         }
     </style>
 
+
+
 </head>
 <body>
     <div id="app">
@@ -123,13 +125,6 @@
             @yield('content')
         </main>
     </div>
-    <script type="text/javascript">
-        $(function () {
-            var Format = 'yy-mm-dd';
-            $('#datepicker').datepicker({
-                dateFormat: Format
-            });
-        });
-    </script>
+
 </body>
 </html>

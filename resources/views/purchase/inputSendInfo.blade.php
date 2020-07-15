@@ -70,7 +70,7 @@
                             <label for="delivery_date" class="col-md-4 col-form-label text-md-right">{{ __('お届け希望日') }}</label>
 
                             <div class="col-md-6">
-                            <input id="delivery_date" type="text" id="datepicker" class="form-control @error('delivery_date') is-invalid @enderror" name="delivery_date" autocomplete="delivery_date">
+                            <input id="delivery_date" type="date"  class="form-control @error('delivery_date') is-invalid @enderror" name="delivery_date" autocomplete="delivery_date">
 
                                 @error('delivery_date')
                                     <span class="invalid-feedback" role="alert">
@@ -79,7 +79,6 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="form-group row mt-4">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
