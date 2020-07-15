@@ -15,7 +15,7 @@ class PurchaseController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function cart()
     {
         $user = Auth::user();
@@ -86,11 +86,8 @@ class PurchaseController extends Controller
         //     return redirect('shoppingcart');
         // }
         $request->validate([
-            'destination_name' => ['required', 'string', 'max:255'],
-            'destination_postal_code' => ['required'],
-            'destination_address' => ['required'],
-            'phone_number' => ['required'],
-            'delivery_date' => 'required|date|after:today'
+            'destination_name' => ['string', 'max:255'],
+            'delivery_date' => '|date|after:today'
         ]);
         
         return view('/purchase/inputSettlementInfo', [
@@ -131,7 +128,6 @@ class PurchaseController extends Controller
         $carts = DB::table('carts')->where('carts.user_id', '=', $user_id)->get();
         
         foreach($carts as $cart) {
-            // $product = DB::table('products')->where('id', '=', $cart->product_id)->first();
             $product = Product::find($cart->product_id);
             if($cart->amount > $product->amount) {
                 if($product->amount == 0) {
@@ -154,8 +150,8 @@ class PurchaseController extends Controller
                 ['user_id' => $user_id, 'product_id' => $cart->product_id, 'amount' => $cart->amount, 
                 'destination_name' => $request->destination_name, 'destination_postal_code' => $request->destination_postal_code, 'destination_address' => $request->destination_address, 'phone_number' => $request->phone_number, 'delivery_date' => $request->delivery_date, 'delivery_status_id' => 1]
             );
-           
-           $product->amount -= $cart->amount;
+            
+            $product->amount -= $cart->amount;
             if($product->amount == 0) {
                 $product->status_id = 3;
             }
