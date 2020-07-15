@@ -85,7 +85,7 @@ class PurchaseController extends Controller
             'destination_postal_code' => ['required'],
             'destination_address' => ['required'],
             'phone_number' => ['required'],
-            'delivery_date' => 'required|date|after:tomorrow'
+            'delivery_date' => 'required|date|after:today'
         ]);
         
         return view('/purchase/inputSettlementInfo', [
