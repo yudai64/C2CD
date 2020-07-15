@@ -200,8 +200,7 @@ class MyPageController extends Controller
         ->join('delivery_statuses','purchase_histories.delivery_status_id','delivery_statuses.id')
         ->join('statuses','products.status_id', '=', 'statuses.id')
         ->orderBy('purchase_histories.id','desc')
-        ->get();
-        //->paginate(20);
+        ->paginate(20);
 
         return view('mypage/purchaseHistory', [
             'products' => $products

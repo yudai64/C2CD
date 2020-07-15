@@ -41,7 +41,7 @@
 
    </div>
 </div>
-
+<div class="mx-auto mt-4" style="width: 200px;">{{ $products->links() }}</div>
 
 </div>
 @endsection
