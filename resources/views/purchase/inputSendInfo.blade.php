@@ -71,6 +71,7 @@
 
                             <div class="col-md-6">
                             <input id="delivery_date" type="date"  class="form-control @error('delivery_date') is-invalid @enderror" name="delivery_date" autocomplete="delivery_date">
+                            <input id="delivery_date" type="text" id="datepicker" class="form-control @error('delivery_date') is-invalid @enderror" name="delivery_date" value="{{old('delivery_date')}}"autocomplete="delivery_date">
 
                                 @error('delivery_date')
                                     <span class="invalid-feedback" role="alert">
