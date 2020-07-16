@@ -54,7 +54,7 @@
                   @else
                   <form method="GET" action="/mypage/purchaseHistory" class="text-center">
                     @csrf
-                      <button type="submit" class="btn btn-primary btn-sm mt-2">戻る</button>
+                      <button type="submit" class="btn btn-outline-dark btn-sm mt-2">戻る</button>
                     </form>
                   @endif
 

@@ -6,10 +6,10 @@
             <div class="card">
                 <div class="card-header">出品確認画面</div>
 
-                <div class="card-body">
-                  <form method="POST" action="{{ route('product.store') }}" class="text-center">
+                <div class="card-body mx-auto">
+                  <form method="POST" action="{{ route('product.store') }}" >
                   @csrf
-                    <div class="pl-2 text-center mb-4">
+                    <div class="pl-2  mb-4">
                         <img src="http://127.0.0.1:8000/{{ $post_data['read_temp_path'] }}" width="200" height="200">
                     </div>
                     <div class="pl-2">
@@ -32,9 +32,11 @@
                       <span id="describe">詳細 : </span>
                       {{ $post_data['describe'] }}
                     </div>
-
+                    <div class="text-center">
                     <button type="submit" class="btn btn-primary ml-2 mt-3">{{ __('出品') }}</button>
+                    <button type="button" class='btn btn-outline-dark ml-2 mt-3' onclick="history.back()">戻る</button>
                   </form>
+                </div>
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('購入完了') }}</div>
 
-                <div class="card-body">
+                <div class="card-body text-center">
                     thank you
                 </div>
   　         </div>

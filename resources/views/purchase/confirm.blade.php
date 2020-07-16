@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">購入情報確認画面</div>
                   <div class="card-body">
-                  <div class="mx-auto">
+                  <div class="text-center">
                     <h5>お届け先情報</h5>
                     <div class="pl-2">
                       <span id="destination_name">お名前 : </span>
@@ -30,7 +30,7 @@
                     </div>
                   </div>
                   <div class="pt-4">
-                    <h5 class="pb-3">購入商品</h5>
+                    <h5 class="pb-3 text-center">購入商品</h5>
                       @foreach($products as $product)
                       <div class="mt-3 border w-75 mx-auto">
                         <div class="float-left">
@@ -57,7 +57,8 @@
                       <input type="hidden" name="destination_address"       value="{{$post_data['destination_address']}}"/>
                       <input type="hidden" name="phone_number"              value="{{$post_data['phone_number']}}"/>
                       <input type="hidden" name="delivery_date"                 value="{{$post_data['delivery_date']}}"/>
-                      <button type="submit" class="btn btn-primary">{{__('購入を確定する')}}</button>
+                      <button type="submit" class="btn btn-primary ml-2 mt-3">{{__('購入を確定する')}}</button>
+                      <button type="button" class='btn btn-outline-dark ml-2 mt-3' onclick="history.back()">戻る</button>
                     </form>
                   </div>
             </div>

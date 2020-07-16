@@ -66,9 +66,10 @@
 
                         <div class="form-group row mt-4">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary ml-2 mt-3">
                                     {{ __('購入情報を確認') }}
                                 </button>
+                                <button type="button" class='btn btn-outline-dark ml-2 mt-3' onclick="history.back()">戻る</button>
                             </div>
                         </div>
                     </form>

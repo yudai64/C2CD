@@ -6,8 +6,9 @@
             <div class="card">
                 <div class="card-header">確認画面</div>
 
-                <div class="card-body">
-                  <form method="POST" action="/register">
+                <div class="card-body mx-auto">
+                  
+                  <form method="POST" action="/register" >
                   @csrf
                     <div class="pl-2">
                       <span id="user_name">名前 : </span>
@@ -29,7 +30,7 @@
                       <span id="phone_number">電話番号 : </span>
                       {{ $post_data['phone_number'] }}
                     </div>
-             
+                    <div class="text-center">
                     <input type="hidden" name="email" value="{{ $post_data['email'] }}" />
                     <input type="hidden" name="password" value="{{ $post_data['password'] }}" />
                     <input type="hidden" name="password_confirmation" value="{{ $post_data['password_confirmation'] }}" />
@@ -39,7 +40,9 @@
                     <input type="hidden" name="phone_number" value="{{ $post_data['phone_number'] }}" />
 
                     <button type="submit" class="btn btn-primary ml-2 mt-3">{{ __('登録') }}</button>
+                    <button type="button" class='btn btn-outline-dark ml-2 mt-3' onclick="history.back()">戻る</button>
                   </form>
+                </div>
                 </div>
             </div>
         </div>
