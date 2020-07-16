@@ -86,8 +86,10 @@ class PurchaseController extends Controller
         //     return redirect('shoppingcart');
         // }
         $request->validate([
-            'destination_name' => ['string', 'max:255'],
-            'delivery_date' => '|date|after:today'
+            'destination_name' => 'string', 'max:255',
+            'destination_postal_code' => 'regex:/^\d{3}-\d{4}$/',
+            'phone_number' => 'regex:/^[0-9]{2,4}-[0-9]{2,4}-[0-9]{3,4}$/',
+            'delivery_date' => 'date|after:today'
         ]);
         
         return view('/purchase/inputSettlementInfo', [

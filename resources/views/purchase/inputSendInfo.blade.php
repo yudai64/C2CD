@@ -70,7 +70,7 @@
                             <label for="delivery_date" class="col-md-4 col-form-label text-md-right">{{ __('お届け希望日') }}</label>
 
                             <div class="col-md-6">
-                            <input id="delivery_date" type="date"  class="form-control @error('delivery_date') is-invalid @enderror" name="delivery_date" value="{{old('delivery_date')}}" autocomplete="delivery_date">
+                            <input id="delivery_date" type="date"  class="form-control @error('delivery_date') is-invalid @enderror" name="delivery_date" value="{{old('delivery_date')}}" required autocomplete="delivery_date">
 
                                 @error('delivery_date')
                                     <span class="invalid-feedback" role="alert">
@@ -85,7 +85,6 @@
                                     {{ __('決済情報画面に進む') }}
                                 </button>
                                 <button type="button" class='btn btn-outline-dark ml-2 mt-3' onclick="history.back()">戻る</button>
-                               
                             </div>
                         </div>
                     </form>
