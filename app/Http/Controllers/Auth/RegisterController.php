@@ -81,17 +81,30 @@ class RegisterController extends Controller
     public function register2(Request $request)
     {
         $request->validate([
-            'email'      => 'required|email|unique:users,email',
-            'password' => 'required|min:8',
-            'password_confirmation' => 'required|same:password',
+            'email'      => 'email|unique:users,email',
+            'password' => 'min:8',
+            'password_confirmation' => 'same:password',
         ]);
 
         $post_data = $request->all();
+        $request->session()->put('post_data', $post_data);
         return view('auth.register2', compact('post_data'));
     }
 
     public function confirm(Request $request)
     {
+
+        $validator = Validator::make($request->all(), [
+            'postal_code' => 'regex:/^\d{3}-\d{4}$/',
+            'phone_number' => 'regex:/^[0-9]{2,4}-[0-9]{2,4}-[0-9]{3,4}$/'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/register2')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
         $post_data = $request->all();
         return view('auth.confirm', compact('post_data'));
     }
