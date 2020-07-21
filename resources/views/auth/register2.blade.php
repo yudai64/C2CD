@@ -77,7 +77,7 @@
                                 <button type="submit" class="btn btn-primary ml-2 mt-3">
                                     {{ __('確認') }}
                                 </button>
-                                <button type="button" class='btn btn-outline-dark ml-2 mt-3' onclick="history.back()">戻る</button>
+                                <button type="button" class='btn btn-outline-dark ml-2 mt-3' onclick="location.href='register'">戻る</button>
                             </div>
                         </div>
                     </form>
