@@ -30,7 +30,7 @@
                     </div>
                   </div>
                   <div class="pt-4">
-                    <h5 class="pb-3 text-center">購入商品</h5>
+                    <h5 class="pt-2 pb-1 text-center">購入商品</h5>
                       @foreach($products as $product)
                       <div class="mt-3 border w-75 mx-auto">
                         <div class="float-left">

@@ -107,6 +107,10 @@ return [
         'delivery_date' => [
             'date' => 'YYYY-MM-DDの形式で入力してください。',
             'after' => 'お届け希望日は明日以降の日付にしてください。'
+        ],
+
+        'expiration' => [
+            'after_or_equal' => '有効期限がきれています。',
         ]
     ],
 

@@ -25,22 +25,16 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="expiration_month" class="col-md-4 col-form-label text-md-right">{{ __('有効期限') }}</label>
+                            <label for="expiration" class="col-md-4 col-form-label text-md-right">{{ __('有効期限') }}</label>
 
-                            <div class="col-md-6">
-                                <select style="width: 70px" id="expiration_month" class="float-left form-control @error('expiration_month') is-invalid @enderror" name="expiration_month" value=""  required autocomplete="expiration_month">
-                                    <option value="">月</option>
-                                    @for($i = 1; $i <= 12; $i++)
-                                    <option value="{{ $i }}" @if(old('expiration_month') == $i) selected @endif>{{ $i }}</option>
-                                    @endfor
-                                </select>
+                            <div class="col-md-5">
+                                <input id="expiration" type="month" class="form-control @error('expiration') is-invalid @enderror" name="expiration" value="{{old('expiration')}}" required autocomplete="expiration">
 
-                                <select style="width: 100px" id="expiration_year" class="clearfix form-control @error('expiration_year') is-invalid @enderror" name="expiration_year" value=""  required autocomplete="expiration_year">
-                                    <option value="">年</option>
-                                    @for($i = 2020; $i <= 2040; $i++)
-                                    <option value="{{ $i }}" @if(old('expiration_year') == $i) selected @endif>{{ $i }}</option>
-                                    @endfor
-                                </select>
+                                @error('expiration')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -48,7 +42,7 @@
                             <label for="security_code" class="col-md-4 col-form-label text-md-right">{{ __('セキュリティーコード') }}</label>
 
                             <div class="col-md-5">
-                                <input id="security_code" type="text" class="form-control @error('security_code') is-invalid @enderror" name="security_code" value="" required autocomplete="security_code" placeholder="3桁の半角数字でご記入ください">
+                                <input id="security_code" type="password" class="form-control @error('security_code') is-invalid @enderror" name="security_code" value="" required autocomplete="security_code" placeholder="3桁の半角数字でご記入ください">
 
                                 @error('security_code')
                                     <span class="invalid-feedback" role="alert">
@@ -69,7 +63,7 @@
                                 <button type="submit" class="btn btn-primary ml-2 mt-3">
                                     {{ __('購入情報を確認') }}
                                 </button>
-                                <button type="button" class='btn btn-outline-dark ml-2 mt-3' onclick="history.back()">戻る</button>
+                                <button type="button" class='btn btn-outline-dark ml-2 mt-3' onclick="location.href='input-send-info'">戻る</button>
                             </div>
                         </div>
                     </form>

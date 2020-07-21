@@ -103,10 +103,17 @@ class PurchaseController extends Controller
 
     public function confirm(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'card_number'      => 'required|digits:16',
             'security_code' => 'required|digits:3',
+            'expiration' => 'after_or_equal:last month'
         ]);
+
+        if ($validator->fails()) {
+            return redirect(route('input-settlement-info'))
+                        ->withErrors($validator)
+                        ->withInput();
+        }
 
         $user = Auth::user();
 
@@ -128,9 +135,16 @@ class PurchaseController extends Controller
 
         $user_id = Auth::id();
         $carts = DB::table('carts')->where('carts.user_id', '=', $user_id)->get();
+
+        //カート情報が空、または送付先情報が空のときカート画面にリダイレクト
+        if(count($carts) == 0 or is_null($request->destination_name)) {
+            $message = '購入に失敗しました。もう一度やり直してください';
+            return redirect('shoppingcart')->with('message', $message);
+        }
         
         foreach($carts as $cart) {
             $product = Product::find($cart->product_id);
+            //カートに入っている個数が在庫数より多いときカートの画面にリダイレクト
             if($cart->amount > $product->amount) {
                 if($product->amount == 0) {
                     $message = $product->product_name . 'は在庫がありません。';
@@ -139,6 +153,7 @@ class PurchaseController extends Controller
                 }
                 return redirect('shoppingcart')->with('message', $message);
             }
+            //ユーザーがその商品を購入したことがあったら商品の購入者数を+1
             $sum = DB::table('purchase_histories')
             ->where('purchase_histories.product_id','=',$cart->product_id)
             ->where('purchase_histories.user_id','=',$user_id)->first();
@@ -147,12 +162,13 @@ class PurchaseController extends Controller
                 $product->purchasers_number += 1;
             }
 
-
+            //購入履歴に反映
             DB::table('purchase_histories')->insert(
                 ['user_id' => $user_id, 'product_id' => $cart->product_id, 'amount' => $cart->amount, 
                 'destination_name' => $request->destination_name, 'destination_postal_code' => $request->destination_postal_code, 'destination_address' => $request->destination_address, 'phone_number' => $request->phone_number, 'delivery_date' => $request->delivery_date, 'delivery_status_id' => 1]
             );
-            
+
+            //商品テーブルの在庫とステータスを変更
             $product->amount -= $cart->amount;
             if($product->amount == 0) {
                 $product->status_id = 3;
@@ -160,6 +176,7 @@ class PurchaseController extends Controller
             $product->save();
         }
 
+        //カート情報削除
         DB::table('carts')->where('user_id', '=', $user_id)->delete();
 
         return view('/purchase/complete');
