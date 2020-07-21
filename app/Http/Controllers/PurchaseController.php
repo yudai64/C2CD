@@ -115,6 +115,11 @@ class PurchaseController extends Controller
                         ->withInput();
         }
 
+        if (is_null($request->delivery_date)) {
+            $message = '送付先情報が確認できませんでした。';
+            return redirect('shoppingcart')->with('message', $message);
+        }
+
         $user = Auth::user();
 
         $products = DB::table('carts')->where('carts.user_id', $user->id)->join('products','carts.product_id', '=', 'products.id')->orderByRaw('carts.updated_at DESC')->select('carts.id as cart_id', 'products.id as id','products.product_name', 'products.image', 'products.price', 'carts.amount', 'carts.updated_at')->get();

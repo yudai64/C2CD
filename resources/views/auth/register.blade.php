@@ -4,6 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if (session('message'))
+            <div class="alert alert-danger text-center">
+                {{ session('message') }}
+            </div>
+            @endif
             <div class="card">
                 <div class="card-header">{{ __('新規登録') }}</div>
 
