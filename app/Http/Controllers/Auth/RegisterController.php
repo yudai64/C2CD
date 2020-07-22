@@ -105,6 +105,11 @@ class RegisterController extends Controller
                         ->withInput();
         }
 
+        if (is_null($request->email)) {
+            $message = 'メールアドレスが確認できませんでした。始めから入力してください';
+            return redirect('register')->with('message', $message);
+        }
+
         $post_data = $request->all();
         return view('auth.confirm', compact('post_data'));
     }
