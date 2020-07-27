@@ -12,7 +12,7 @@
                         @csrf
                         @method('PATCH')
                         <div class="pl-2 text-center mb-4">
-                            <img src="http://127.0.0.1:8000/{{ $product->image }}" width="200" height="200">
+                            <img src="/{{ $product->image }}" width="200" height="200">
                         </div>
                         <div class="form-group row">
                             <label for="product_name" class="col-md-4 col-form-label text-md-right">{{ __('商品名') }}</label>

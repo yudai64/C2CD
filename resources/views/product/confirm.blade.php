@@ -10,7 +10,7 @@
                   <form method="POST" action="{{ route('product.store') }}" >
                   @csrf
                     <div class="pl-2  mb-4">
-                        <img src="http://127.0.0.1:8000/{{ $post_data['read_temp_path'] }}" width="200" height="200">
+                        <img src="/{{ $post_data['read_temp_path'] }}" width="200" height="200">
                     </div>
                     <div class="pl-2">
                       <span id="product_name">商品名 : </span>

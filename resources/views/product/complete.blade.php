@@ -8,11 +8,9 @@
                 <div class="card-header">{{ __('出品完了') }}</div>
                 <div class="text-center">
                 <div class="card-body">
-                    
                     thank you
-                   
                 </div>
-                <a href="http://127.0.0.1:8000/product/{{ $id}}" class="ml-3">出品詳細ページに行く</a>
+                <a href="/product/{{ $id}}" class="ml-3">出品詳細ページに行く</a>
             </div>
             </div>
         </div>

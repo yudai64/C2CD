@@ -34,8 +34,8 @@
                       @foreach($products as $product)
                       <div class="mt-3 border w-75 mx-auto">
                         <div class="float-left">
-                          <a href="http://127.0.0.1:8000/product/{{ $product->id}}">
-                            <img src="http://127.0.0.1:8000/{{ $product->image}}" width="200" height="200">
+                          <a href="/product/{{ $product->id}}">
+                            <img src="/{{ $product->image}}" width="200" height="200">
                           </a>
                         </div>
                         <div class="clearfix">
