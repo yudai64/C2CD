@@ -84,7 +84,7 @@
                                 <button type="submit" class="btn btn-primary ml-2 mt-3">
                                     {{ __('決済情報画面に進む') }}
                                 </button>
-                                <button type="button" class='btn btn-outline-dark ml-2 mt-3' onclick="history.back()">戻る</button>
+                                <button type="button" class='btn btn-outline-dark ml-2 mt-3' onclick="location.href='shoppingcart'">戻る</button>
                             </div>
                         </div>
                     </form>
