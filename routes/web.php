@@ -59,5 +59,5 @@ Route::post('purchase/delete', 'PurchaseController@delete')->name('purchase.dele
 Route::post('purchase/decrease', 'PurchaseController@decrease')->name('purchase.decrease');
 Route::get('input-send-info', 'PurchaseController@inputSendInfo')->name('input-send-info');
 Route::match(['get', 'post'], 'input-settlement-info', 'PurchaseController@inputSettlementInfo')->name('input-settlement-info');
-Route::post('purchase/confirm', 'purchaseController@confirm')->name('purchase.confirm');
+Route::post('purchase/confirm', 'PurchaseController@confirm')->name('purchase.confirm');
 Route::post('determine', 'PurchaseController@determine')->name('purchase.determine');
