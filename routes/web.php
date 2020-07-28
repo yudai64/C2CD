@@ -33,19 +33,19 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-Route::get('/mypage','MyPageController@getUser')->name('mypage');
-Route::get('/mypage/listings','MypageController@listings')->name('mypage.listings');
+Route::get('mypage','MyPageController@getUser')->name('mypage');
+Route::get('mypage/listings','MyPageController@listings')->name('mypage.listings');
 Route::get('mypage/profile', 'MyPageController@profile');
 Route::get('mypage/profile/edit', 'MyPageController@edit');
 Route::patch('mypage/profile/update', 'MyPageController@update');
-Route::get('mypage/listing/{id}', 'MypageController@listing')->name('listing.show');
-Route::get('mypage/listing/{id}/edit','MypageController@editProduct');
-Route::patch('mypage/listing/productUpdate', 'MypageController@productUpdate');
-Route::post('mypage/product-status-switch', 'MypageController@switch')->name('statusSwitch');
+Route::get('mypage/listing/{id}', 'MyPageController@listing')->name('listing.show');
+Route::get('mypage/listing/{id}/edit','MyPageController@editProduct');
+Route::patch('mypage/listing/productUpdate', 'MyPageController@productUpdate');
+Route::post('mypage/product-status-switch', 'MyPageController@switch')->name('statusSwitch');
 Route::get('mypage/purchaseHistory','MyPageController@purchaseHistory');
 Route::post('mypage/delivery-notice', 'MyPageController@noticeDelivery')->name('noticeDelivery');
 Route::get('mypage/purchase/{id}','MyPageController@purchase')->name('purchase.show');
-Route::post('mypage/complete-transaction', 'MypageController@completeTransaction')->name('completeTransaction');
+Route::post('mypage/complete-transaction', 'MyPageController@completeTransaction')->name('completeTransaction');
 
 Route::resource('product', 'ProductController');
 Route::post('product/confirm', 'ProductController@confirm')->name('product.confirm');
