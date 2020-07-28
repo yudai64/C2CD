@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
 use App\User;
@@ -159,9 +159,9 @@ class MyPageController extends Controller
         if(is_null($image)){
             $product->image = $product->image;
         } else {
-            $path = $image->store('public/product');
-            $read_path = str_replace('public/', 'storage/', $path);
-            $product->image = $read_path;
+            $path = Storage::disk('s3')->putFile('/', $image, 'public');
+            $url = Storage::disk('s3')->url($path);
+            $product->image = $url;
         }
 
         $product->save();

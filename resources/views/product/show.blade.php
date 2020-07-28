@@ -10,7 +10,7 @@
                   <form method="POST" action="{{ route('purchase.add') }}" class="text-center">
                   @csrf
                     <div class="pl-2 text-center mb-4">
-                        <img src="/{{ $product->image }}" width="200" height="200">
+                        <img src="{{ $product->image }}" width="200" height="200">
                     </div>
                     <div class="pl-2">
                       <span id="product_name">商品名 : </span>

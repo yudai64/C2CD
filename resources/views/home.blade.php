@@ -12,7 +12,7 @@
                 @foreach($products as $product)
                 <div class="col-md-3 mt-5 text-center">
                         <a href="/product/{{ $product->id}}">
-                        <img src="/{{ $product->image }}" width="250" height="250">
+                        <img src="{{ $product->image }}" width="250" height="250">
                         </a>
                         <div class="mt-2 mx-auto">
                             {{ $product->product_name}}</br>

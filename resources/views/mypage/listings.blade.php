@@ -16,7 +16,7 @@
           <div class="row  justify-content-center">
           <div class="col-lg-5">
             <a href="/mypage/listing/{{ $product->id}}">
-              <img src="/{{ $product->image}}" width="80" height="80" class="card-img h-100" alt="...">
+              <img src="{{ $product->image}}" width="80" height="80" class="card-img h-100" alt="...">
               </a>
           </div>
           <div class="col-lg-7 pl-2">
