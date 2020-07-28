@@ -44,24 +44,20 @@ class ProductController extends Controller
             'category' => $category,
         );
         
-        $request->session()->put('post_data', $post_data);
+        // $request->session()->put('post_data', $post_data);
         return view('product/confirm', compact('post_data'));
     }
 
     public function store(Request $request, Product $product)
     {
-        $post_data = session()->get('post_data');
-        $read_path = $post_data['url'];
-        $request->session()->forget('post_data');
-
-        $product->product_name = $post_data['product_name'];
-        $product->price = (int)$post_data['price'];
-        $product->amount = (int)$post_data['amount'];
+        $product->product_name = $request->product_name;
+        $product->price = (int)$request->price;
+        $product->amount = (int)$request->amount;
         $product->user_id = Auth::id();
-        $product->category_id = (int)$post_data['category_id'];
+        $product->category_id = (int)$request->category_id;
         $product->status_id = 1;
-        $product->describe = $post_data['describe'];
-        $product->image = $read_path;
+        $product->describe = $request->describe;
+        $product->image = $request->url;
         $product->purchasers_number = 0;
         $product->save();
 
