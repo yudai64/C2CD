@@ -11,20 +11,35 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .content {
+        margin-top: 140px;
+        }
+    </style>
+
+
+
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
 
                  
+                <div class="mr-auto flex-column">
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <h1>C2CD</h1>
+                    </a>
                 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -33,29 +48,29 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
 
-                    <div class="mr-auto flex-column">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <h1>C2CD</h1>
-                    </a>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('出品') }}</a>
+                            <a class="nav-link" href="{{ route('product.create')}}">{{ __('出品') }}</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              カテゴリ
+                            カテゴリ
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="#">邦楽</a>
-                              <a class="dropdown-item" href="#">洋楽</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#">その他</a>
+                                <a class="dropdown-item" href="/category/1">カテゴリー1</a>
+                                <a class="dropdown-item" href="/category/2">カテゴリー2</a>
+                                <a class="dropdown-item" href="/category/3">カテゴリー3</a>
+                                <a class="dropdown-item" href="/category/4">カテゴリー4</a>
+                                <a class="dropdown-item" href="/category/5">カテゴリー5</a>
+                            <!-- <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">その他</a> -->
                             </div>
-                          </li>
-                          <form class="form-inline my-2 my-lg-0">
-                            <input type="search" class="form-control mr-sm-2" size="80" placeholder="キーワード" aria-label="検索...">
+                        </li>
+                        <form class="form-inline my-2 my-lg-0" method="GET" action="{{ route('search.keyword') }}">
+                            @csrf
+                            <input type="search" class="form-control mr-sm-2" size="80" placeholder="キーワード" aria-label="検索..." name="keyword" @isset( $keyword) value="{{ $keyword }}" @endisset>
                             <button type="submit" class="btn btn-outline-primary my-2 my-sm-0">検索</button>
-                          </form>
+                        </form>
 
                     
 
@@ -73,7 +88,7 @@
                             @endif
                         @else
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('ショッピングカート') }}</a>
+                            <a class="nav-link" href="{{ route('purchase.cart') }}">{{ __('ショッピングカート') }}</a>
                         </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -83,12 +98,12 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('mypage') }}"
                                     onclick="event.preventDefault();
-                                                       document.getElementById('mypage').submit();">
+                                                    document.getElementById('mypage').submit();">
                                         {{ __('マイページ') }}           
                                 </a>  
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
                                     <form id="mypage" action="{{ route('mypage') }}" method="GET">
@@ -106,9 +121,10 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="content">
             @yield('content')
         </main>
     </div>
+
 </body>
 </html>

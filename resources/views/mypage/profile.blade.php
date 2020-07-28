@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">プロフィール</div>
 
-                <div class="card-body">
+                <div class="card-body  mx-auto">
                   <div class="pl-2">
                     <span id="user_name">名前 : </span>
                     {{ $profile->user_name }}
@@ -28,11 +28,13 @@
                     {{ $profile->phone_number }}
                   </div>
                 </div>
+                <div class="text-center">
                 <form method="GET" action="/mypage/profile/edit">
-                  <button type="submit" class="btn btn-primary ml-4 mb-3">
+                  <button type="submit" class="btn btn-primary mt-2 mb-3 ">
                       {{ __('編集') }}
                   </button>
                 </form>
+              </div>
             </div>
         </div>
     </div>

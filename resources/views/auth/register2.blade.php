@@ -68,15 +68,16 @@
                             </div>
                         </div>
 
-                        <input type="hidden" name="email" value="{{ $post_data['email'] }}" />
-                        <input type="hidden" name="password" value="{{ $post_data['password'] }}" />
-                        <input type="hidden" name="password_confirmation" value="{{ $post_data['password_confirmation'] }}" />
+                        <input type="hidden" name="email" value=@if(isset($post_data['email'])) "{{ $post_data['email'] }}" @else "{{old('email')}}" @endif/>
+                        <input type="hidden" name="password" value=@if(isset($post_data['password'])) "{{ $post_data['password'] }}" @else "{{old('password')}}" @endif/>
+                        <input type="hidden" name="password_confirmation" value=@if(isset($post_data['password_confirmation'])) "{{ $post_data['password_confirmation'] }}" @else "{{old('password_confirmation')}}" @endif/>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('登録') }}
+                                <button type="submit" class="btn btn-primary ml-2 mt-3">
+                                    {{ __('確認') }}
                                 </button>
+                                <button type="button" class='btn btn-outline-dark ml-2 mt-3' onclick="location.href='register'">戻る</button>
                             </div>
                         </div>
                     </form>
