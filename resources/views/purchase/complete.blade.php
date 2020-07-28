@@ -10,7 +10,7 @@
                 <div class="card-body text-center">
                     thank you
                 </div>
-  　         </div>
+　         </div>
         </div>
     </div>
 </div>

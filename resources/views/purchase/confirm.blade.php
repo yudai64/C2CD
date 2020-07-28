@@ -35,7 +35,7 @@
                       <div class="mt-3 border w-75 mx-auto">
                         <div class="float-left">
                           <a href="/product/{{ $product->id}}">
-                            <img src="/{{ $product->image}}" width="200" height="200">
+                            <img src="{{ $product->image}}" width="200" height="200">
                           </a>
                         </div>
                         <div class="clearfix">
